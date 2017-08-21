@@ -25,8 +25,8 @@ class Poofer
       pooferState = LOW;
     }
 
-    void On(unsigned int ms)
-    {
+    void On(unsigned int ms) //this one turns them on and off at the same time. 
+    {                       // Use with the pattern function
       if (pooferState == HIGH) {
         unsigned int remainingTime = OnTime - elapsedOn;
         if (remainingTime < ms) {
@@ -49,29 +49,18 @@ class Poofer
       }
     }
 
-    void patternOn(unsigned int ms)
-    {
-      elapsedMillis currentMillis;
-
-      while (currentMillis < ms) {
-        pooferState = HIGH;
-        digitalWrite(pooferPin, pooferState);
-      }
-      pooferState = LOW;
-      digitalWrite(pooferPin, pooferState);
-      currentMillis = 0;
-    }
-
-    void patternOff(unsigned int ms)
-    {
-      elapsedMillis currentMillis;
-
-      while (currentMillis < ms) {
-        pooferState = LOW;
-        digitalWrite(pooferPin, pooferState);
-      }
-      currentMillis = 0;
-    }
+//    void patternOn(unsigned int ms) //this one turns them on and off sequentially
+//    {
+//      elapsedMillis currentMillis;
+//
+//      while (currentMillis < ms) {
+//        pooferState = HIGH;
+//        digitalWrite(pooferPin, pooferState);
+//      }
+//      pooferState = LOW;
+//      digitalWrite(pooferPin, pooferState);
+//      currentMillis = 0;
+//    }
 
     void Update()
     {
@@ -83,19 +72,15 @@ class Poofer
       }
     }
 };
-
-//buttons on the magic wish lamp
-Bounce btn1 = Bounce(1, 10);
+Bounce btn1 = Bounce(1, 10); //buttons on the magic wish lamp
 Bounce btn2 = Bounce(2, 10);
 Bounce btn3 = Bounce(3, 10);
 
-//controller input read through serial
-int buttonValue;
+int buttonValue; //controller input read through serial
 
-int out1 = 19;
+int out1 = 19; 
 int out2 = 18;
 int out3 = 17;
-
 int out4 = 16;
 int out5 = 15;
 int out6 = 14;
@@ -103,15 +88,13 @@ int out6 = 14;
 Poofer poofLittle1(out1);
 Poofer poofLittle2(out2);
 Poofer poofLittle3(out3);
-
 Poofer poofBig1(out4);
 Poofer poofBig2(out5);
 Poofer poofBig3(out6);
 
+long randomNumber; //random number for selecting a random pattern
 
-
-//Moopi's fire patterns
-
+//-----------Moopi's fire patterns------------//
 //the choo choo train
 const int pattern0[] PROGMEM = {
   1, 500, 0, 510,
@@ -244,26 +227,27 @@ const int pattern1[] PROGMEM = {
 //Safety Dance/ Shave and a Haircut 
 const int pattern2[] PROGMEM = {
   //safety dance
-  3, 500, 0, 510,
-  3, 500, 0, 510,
-  2, 500, 0, 510,
-  2, 500, 0, 510,
+  3, 200, 0, 350,
+  3, 200, 0, 350,
+  6, 200, 0, 350,
+  6, 200, 0, 350,
+  3, 200, 0, 350,
+  3, 200, 0, 300,
+  1, 100, 0, 120,
   
-  3, 500, 0, 510,
-  3, 500, 0, 510,
-  3, 250, 0, 260,
-  2, 500, 0, 510,
-  2, 500, 0, 1010,
-
-  2, 500, 0, 510,
-  2, 500, 0, 510,
-  1, 500, 0, 510,
-  1, 500, 0, 510,
-  2, 500, 0, 510,
-  2, 500, 0, 510,
-  2, 250, 0, 260,
-  1, 500, 0, 510,
-  1, 500, 0, 1010,
+  4, 200, 0, 350,
+  4, 200, 0, 350,
+  
+  3, 200, 0, 350,
+  3, 200, 0, 350,
+  6, 200, 0, 350,
+  6, 200, 0, 350,
+  3, 200, 0, 350,
+  3, 200, 0, 300,
+  1, 100, 0, 120,
+  
+  4, 200, 0, 350,
+  4, 200, 0, 350,
 
   //you can dance if you want to
   1, 250, 0, 260,
@@ -592,14 +576,97 @@ const int pattern5[] PROGMEM = {
   6, 120, 0, 180,
   3, 40, 0, 40
 };
+//personal jesus
+const int pattern6[] PROGMEM = {
+ 1, 120, 0, 130,
+ 2, 120, 0, 130,
+ 3, 120, 0, 130,
+ 4, 250, 0, 260,
+ 5, 120, 0, 130,
+ 6, 120, 0, 130,
+ 1, 250, 0, 260,
+ 2, 120, 0, 130,
+ 3, 120, 0, 130,  
 
+  1, 500, 
+  2, 500, 
+  3, 500, 
+  4, 500, 
+  5, 500, 
+  6, 500, 0, 1500,
+
+ 1, 120, 0, 130,
+ 2, 120, 0, 130,
+ 3, 120, 0, 130,
+ 4, 250, 0, 260,
+ 5, 120, 0, 130,
+ 6, 120, 0, 130,
+ 1, 250, 0, 260,
+ 2, 120, 0, 130,
+ 3, 120, 0, 130, 
+
+  1, 500, 
+  2, 500, 
+  3, 500, 
+  4, 500, 
+  5, 500, 
+  6, 500, 0, 1500,
+
+  1, 500, 0, 510,
+  5, 120, 0, 130,
+  3, 120, 0, 130,
+  4, 120, 0, 130,
+  2, 250, 0, 260,
+  6, 120, 0, 130,
+  1, 500, 0, 510,
+  5, 250, 0, 260,
+  6, 500, 0, 510,
+  6, 500, 0, 510,
+  
+  1, 1000, 
+  2, 1000, 
+  3, 1000, 
+  4, 1000, 
+  5, 1000, 
+  6, 1000
+};
+// Wedding March
+const int pattern7[] PROGMEM = {
+  1, 500, 0, 510,
+  6, 80, 0, 130,
+  6, 250, 0, 260,
+  
+  6, 1000, 0, 1010,
+
+  1, 500, 0, 510,
+  6, 80, 0, 130,
+  5, 250, 0, 260,
+  
+  6, 1000, 0, 1010,
+
+  1, 500, 0, 510,
+  6, 80, 0, 130,
+  4, 250, 0, 260,
+  
+  4, 500, 0, 510,
+  6, 80, 0, 130,
+  5, 250, 0, 260,
+
+  6, 500, 0, 510,
+  3, 80, 0, 130,
+  6, 250, 0, 260,
+
+  6, 1000, 0, 1010,
+};
 const int * listOfPatterns[] = {
   pattern0,
   pattern1,
   pattern2,
   pattern3,
   pattern4, 
-  pattern5
+  pattern5,
+  pattern6,
+  pattern7
 };
 const int patternLengths[] = {
   sizeof(pattern0) / sizeof(int), //do I need to get these using progmem?
@@ -607,7 +674,9 @@ const int patternLengths[] = {
   sizeof(pattern2) / sizeof(int),
   sizeof(pattern3) / sizeof(int),
   sizeof(pattern4) / sizeof(int),
-  sizeof(pattern5) / sizeof(int)
+  sizeof(pattern5) / sizeof(int),
+  sizeof(pattern6) / sizeof(int),
+  sizeof(pattern7) / sizeof(int)
 };
 const int numberOfPatterns = sizeof(listOfPatterns) / sizeof(const int *);
 int pattern_position;
@@ -691,9 +760,12 @@ void setup() {
   pinMode(out6, OUTPUT);
 
   Serial.println(patternLengths[0]);
+  randomSeed(analogRead(0)); //get a random number to select the function we want
 }
 void loop() {
-
+  randomNumber = random(6);
+  Serial.println(randomNumber);  
+  
   btn1.update();
   btn2.update();
   btn3.update();
@@ -849,20 +921,20 @@ void loop() {
   //pattern buttons
   if (btn1.fallingEdge())
   {
-    start_pattern(5);
+    start_pattern(randomNumber);
     Serial.println("btn 1 pressed");
   }
   //pattern buttons
   if (btn2.fallingEdge())
   {
-    start_pattern(1);
+    start_pattern(randomNumber);
     Serial.println("btn 2 pressed");
   }
   //pattern buttons
   if (btn3.fallingEdge())
   {
-    start_pattern(2);
+    start_pattern(6);
     Serial.println("btn 3 pressed");
   }
-
 }
+
