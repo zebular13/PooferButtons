@@ -19,9 +19,7 @@ class Poofer
     {
       pooferPin = pin;
       pinMode(pooferPin, OUTPUT);
-
       OnTime = 0;
-
       pooferState = LOW;
     }
 
@@ -769,12 +767,10 @@ void loop() {
   btn1.update();
   btn2.update();
   btn3.update();
-
-  // shuts poofers off if they've been on too long
-  poofLittle1.Update();
+ 
+  poofLittle1.Update();  // shuts poofers off if they've been on too long
   poofLittle2.Update();
   poofLittle3.Update();
-
   poofBig1.Update();
   poofBig2.Update();
   poofBig3.Update();
