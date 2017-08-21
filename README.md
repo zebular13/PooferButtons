@@ -4,10 +4,10 @@ PooferButtons and OctoPooferLEDs control three fire poofers and three LED strips
 
 **Parts List:**
 * Teensy 3.2
-* Teensy 2.0
+* Teensy 2.0 (x2)
 * Teensy breakout board (name?)
 * 2 RS45s
-* 3 4 meter LED strips with 60 LEDs per strip
+* 3 4 meter LED strips with (?) LEDs per strip
 * FIRE STUFF & PROPANE!
 
 
@@ -22,14 +22,13 @@ The control box has four buttons, two potentiometers and kill switch. It also se
 
 ## TO DO:
 - [ ] Create code for holding two buttons at once to trigger patterns
-- [ ] Wire kill switch
-- [ ] Make kill switch override poofers 
+- [ ] Wire kill switch to override poofers 
 - [ ] Add potentiometer control to change speed and open length of poofs (look at Walking Beast's code)
+- [ ] Make sure Button control sends values to start LED patterns
 - [ ] Create new LED patterns:
   - [ ] Whoosh - streak of LEDs that runs up the strip and arrives at the top as flame as it bursts out
   - [ ] Sparkle - math.random to make sparkle effect
-- [ ] Fix timing in Button control to match LED patterns
 - [ ] Add potentiometer control to LED patterns
 
 ## ISSUES:
-makeColor.ino file is not always recognized when OctoPooferLEDs is loaded.
+

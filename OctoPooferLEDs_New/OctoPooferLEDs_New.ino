@@ -1,138 +1,93 @@
+#include <OctoWS2811.h>
+
+const int ledsPerStrip = 240;
+const int nStrips = 3;
+const int nLeds = 692;
+DMAMEM int displayMemory[ledsPerStrip * 6];
+int drawingMemory[ledsPerStrip * 6];
+const int config = WS2811_GRB | WS2811_800kHz;
+OctoWS2811 leds(ledsPerStrip, displayMemory, drawingMemory, config);
+
+#define RED    0x040000
+#define RED2   0x0A0000
+#define GREEN  0x000400
+#define GREEN2 0x000A00
+#define BLUE   0x000004
+#define BLUE2  0x00000A
+#define YELLOW 0x020300
+#define YELLOW2 0x050700
+#define PINK   0x020002
+#define PINK2  0x050005
+#define ORANGE 0x030300
+#define ORANGE2 0x050500
+#define WHITE  0x020202
+
+int rainbowColors[180];
+elapsedMillis elapsed_time; 
 int buttonValue; //controller input read through serial
 
-void setup() {
 
+void setup() {
+  Serial1.begin(9600); //begin the communication with the Teensy 2.0 button box
+  Serial.begin(9600);
+  leds.begin();
+  leds.show();
 }
 
 void loop() {
-
+  unsigned long currentTime = 0;
+  
   if (Serial1.available()) //listen for signals from the controller
   {//read values from the first teensy to tell which button has been pressed
     buttonValue = Serial1.read();
     //a is b1
     if (buttonValue == 'a')
     {
-      poofLittle1.On(4000);
+     //chase yellow up poofer1
     }
     else if (buttonValue == 'A')
     {
-      poofLittle1.Off();
+      //finish chasing yellow up poofer 1
+      //find where it is in the sequence and stop it
     }//c = b2
     else if (buttonValue == 'c')
     {
-      poofLittle2.On(4000);
+     //chase red up poofer2
     }
     else if (buttonValue == 'C')
     {
-      poofLittle2.Off();
+      //find where it is in the sequence and stop it
     }//f is b3
     else if (buttonValue == 'f')
     {
-      poofLittle3.On(4000);
+      //chase blue up poofer3
     } else if (buttonValue == 'F')
     {
-      poofLittle3.Off();
+      //find where it is in the sequence and stop it
     }//button b4
     else if (buttonValue == 'd')
     {
-      poofBig1.On(4000);
+      //chase green up poofer1
     }
     else if (buttonValue == 'D')
     {
-      poofBig1.Off();
+      //find where it is in the sequence and stop it
     }
     else if (buttonValue == 'e')
     { //e is b5
-      poofBig2.On(4000);
+      //chase up poofer2
     }
     else if (buttonValue == 'E')
     {
-      poofBig2.Off();
+      //find where it is in the sequence and stop it
     }
     //b is btn6
     else if (buttonValue == 'b')
     {
-      poofBig3.On(4000);
+     //chase up poofer2
     } else if (buttonValue == 'B')
     {
-      poofBig3.Off();
+      //find where it is in the sequence and stop it
     }
-
-    //all little ones on
-    else if (buttonValue == 'g')
-    {
-      poofLittle1.On(4000);
-      poofLittle2.On(4000);
-      poofLittle3.On(4000);
-    }
-    else if  (buttonValue == 'G')
-    {
-      poofLittle1.Off();
-      poofLittle2.Off();
-      poofLittle3.Off();
-    }//all big ones on
-    else if (buttonValue == 'h')
-    {
-      Serial1.write('h');
-      poofBig1.On(4000);
-      poofBig2.On(4000);
-      poofBig3.On(4000);
-    }
-    else if  (buttonValue == 'H')
-    {
-      Serial1.write('H');
-      poofBig1.Off();
-      poofBig2.Off();
-      poofBig3.Off();
-    }
-    //j is x
-    else if (buttonValue == 'j')
-    {
-      Serial1.write('j');
-    }
-    else if (buttonValue == 'J')
-    {
-      Serial1.write('J');
-    }
-    // i is j1
-    else if (buttonValue == 'i')
-    {
-      Serial1.write('i');
-      poofLittle1.On(4000);
-      poofBig1.On(4000);
-    }
-    else if (buttonValue == 'I')
-    {
-      Serial1.write('I');
-      poofLittle1.Off();
-      poofBig1.Off();
-    }
-    // l is j2
-    else if (buttonValue == 'l')
-    {
-      Serial1.write('l');
-      poofLittle2.On(4000);
-      poofBig2.On(4000);
-    }
-    else if (buttonValue == 'L')
-    {
-      Serial1.write('L');
-      poofLittle2.Off();
-      poofBig2.Off();
-    }
-    // k is j3
-    else if (buttonValue == 'k')
-    {
-      Serial1.write('k');
-      poofLittle3.On(4000);
-      poofBig3.On(4000);
-    }
-    else if (buttonValue == 'K')
-    {
-      Serial1.write('K');
-      poofLittle3.Off();
-      poofBig3.Off();
-    }
-  }
-  
 }
+

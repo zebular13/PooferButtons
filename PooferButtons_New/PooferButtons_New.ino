@@ -93,12 +93,12 @@ Poofer poofBig3(out6);
 long randomNumber; //random number for selecting a random pattern
 
 //-----------Moopi's fire patterns------------//
-//the choo choo train
+//The choo choo train
 const int pattern0[] PROGMEM = {
-  1, 500, 0, 510,
-  2, 500, 0, 510, 
-  3, 500, 0, 510,
-  4, 500, 0, 510,
+  1, 500, 0, 510, // 1 is the valve #, 500 is how long the valve is open in milliseconds, 
+  2, 500, 0, 510, //0 means the valve is closed. 510 - how long the valve is open is how long the valve is closed
+  3, 500, 0, 510, // 510 - 500 = 10 milliseconds or 1/10th of a second
+  4, 500, 0, 510, 
   
   2, 500, 0, 510,
   3, 500, 0, 510,
@@ -245,16 +245,16 @@ const int pattern2[] PROGMEM = {
   1, 100, 0, 120,
   
   4, 200, 0, 350,
-  4, 200, 0, 350,
+  4, 200, 0, 2350,
 
   //you can dance if you want to
-  1, 250, 0, 260,
-  2, 120, 0, 130,
-  3, 250, 0, 260,
-  1, 250, 0, 260,
-  2, 500, 0, 510,
-  3, 250, 0, 260,
-  3, 250, 0, 760,
+//  1, 250, 0, 260,
+//  2, 120, 0, 130,
+//  3, 250, 0, 260,
+//  1, 250, 0, 260,
+//  2, 500, 0, 510,
+//  3, 250, 0, 260,
+//  3, 250, 0, 760,
 
   //shave and a haircut
   1, 100, 0, 250,
@@ -469,8 +469,9 @@ const int pattern4[] PROGMEM = {
   5, 1000, 
   6, 1000
 };
-//Wipe Out 
+//Wipe Out - this one is terrible for some reason
 const int pattern5[] PROGMEM = {
+  0, 100,
   2, 120, 0, 130,
   3, 250, 0, 260,
   3, 120, 0, 230, //pause
@@ -630,31 +631,28 @@ const int pattern6[] PROGMEM = {
 };
 // Wedding March
 const int pattern7[] PROGMEM = {
-  1, 500, 0, 510,
-  6, 80, 0, 130,
-  6, 250, 0, 260,
+  1, 600, 0, 610, //here
+  6, 210, 0, 230, //comes
+  6, 350, 0, 360, //the 
+  6, 1100, 0, 1210, //briiide
+
+  1, 600, 0, 610, //all
+  6, 210, 0, 230, //dressed
+  5, 350, 0, 360, //in
+  6, 1100, 0, 1210,//whiiite
+
+  1, 600, 0, 610, 
+  6, 210, 0, 230,
+  4, 350, 0, 360,
   
-  6, 1000, 0, 1010,
+  4, 600, 0, 610,
+  6, 210, 0, 230,
+  5, 350, 0, 360,
 
-  1, 500, 0, 510,
-  6, 80, 0, 130,
-  5, 250, 0, 260,
-  
-  6, 1000, 0, 1010,
-
-  1, 500, 0, 510,
-  6, 80, 0, 130,
-  4, 250, 0, 260,
-  
-  4, 500, 0, 510,
-  6, 80, 0, 130,
-  5, 250, 0, 260,
-
-  6, 500, 0, 510,
-  3, 80, 0, 130,
-  6, 250, 0, 260,
-
-  6, 1000, 0, 1010,
+  6, 600, 0, 610,
+  3, 210, 0, 230,
+  6, 350, 0, 360,
+  6, 1100, 0, 1210,
 };
 const int * listOfPatterns[] = {
   pattern0,
@@ -711,7 +709,6 @@ void update_pattern() //runs in the loop
             whichPattern = 100;
           } else {
             //do nothing - this is the musical rest or beat
-            Serial.println("rest");
           }
         }
       }
@@ -756,13 +753,11 @@ void setup() {
   pinMode(out4, OUTPUT);
   pinMode(out5, OUTPUT);
   pinMode(out6, OUTPUT);
-
-  Serial.println(patternLengths[0]);
   randomSeed(analogRead(0)); //get a random number to select the function we want
 }
+
 void loop() {
   randomNumber = random(6);
-  Serial.println(randomNumber);  
   
   btn1.update();
   btn2.update();
@@ -775,90 +770,97 @@ void loop() {
   poofBig2.Update();
   poofBig3.Update();
 
-  update_pattern();
+  update_pattern(); 
 
   if (Serial1.available())
-  {
+  {//read values from the first teensy to tell which button has been pressed
     buttonValue = Serial1.read();
-
     //a is b1
     if (buttonValue == 'a')
     {
-      Serial1.write(1);
+      Serial1.write('a');
       poofLittle1.On(4000);
     }
     else if (buttonValue == 'A')
     {
+      Serial1.write('A');
       poofLittle1.Off();
     }//c = b2
     else if (buttonValue == 'c')
     {
-      Serial1.write(2);
+      Serial1.write('c');
       poofLittle2.On(4000);
     }
     else if (buttonValue == 'C')
     {
+      Serial1.write('C');
       poofLittle2.Off();
     }//f is b3
     else if (buttonValue == 'f')
     {
-      Serial1.write(3);
+      Serial1.write('f');
       poofLittle3.On(4000);
     } else if (buttonValue == 'F')
     {
+      Serial1.write('F');
       poofLittle3.Off();
     }//button b4
     else if (buttonValue == 'd')
     {
-      Serial1.write(4);
+      Serial1.write('d');
       poofBig1.On(4000);
     }
     else if (buttonValue == 'D')
     {
+      Serial1.write('D');
       poofBig1.Off();
     }
     else if (buttonValue == 'e')
-    { //button b5
-      Serial1.write(5);
+    { //e is b5
+      Serial1.write('e');
       poofBig2.On(4000);
     }
     else if (buttonValue == 'E')
     {
+      Serial1.write('E');
       poofBig2.Off();
     }
     //b is btn6
     else if (buttonValue == 'b')
     {
-      Serial1.write(6);
+      Serial1.write('b');
       poofBig3.On(4000);
     } else if (buttonValue == 'B')
     {
+      Serial1.write('B');
       poofBig3.Off();
     }
 
     //all little ones on
     else if (buttonValue == 'g')
     {
+      Serial1.write('g');
       poofLittle1.On(4000);
       poofLittle2.On(4000);
       poofLittle3.On(4000);
-      Serial1.write(7);
     }
     else if  (buttonValue == 'G')
     {
+      Serial1.write('G');
       poofLittle1.Off();
       poofLittle2.Off();
       poofLittle3.Off();
     }//all big ones on
     else if (buttonValue == 'h')
     {
+      Serial1.write('h');
       poofBig1.On(4000);
       poofBig2.On(4000);
       poofBig3.On(4000);
-      Serial1.write(8);
     }
     else if  (buttonValue == 'H')
     {
+      Serial1.write('H');
       poofBig1.Off();
       poofBig2.Off();
       poofBig3.Off();
@@ -866,49 +868,48 @@ void loop() {
     //j is x
     else if (buttonValue == 'j')
     {
-      Serial1.write(9);
-      Serial.println("x");
+      Serial1.write('j');
     }
     else if (buttonValue == 'J')
     {
-
+      Serial1.write('J');
     }
     // i is j1
     else if (buttonValue == 'i')
     {
+      Serial1.write('i');
       poofLittle1.On(4000);
       poofBig1.On(4000);
-      Serial1.write(10);
-      Serial.println("j1");
     }
     else if (buttonValue == 'I')
     {
+      Serial1.write('I');
       poofLittle1.Off();
       poofBig1.Off();
     }
     // l is j2
     else if (buttonValue == 'l')
     {
+      Serial1.write('l');
       poofLittle2.On(4000);
       poofBig2.On(4000);
-      Serial1.write(11);
-      Serial.println("j2");
     }
     else if (buttonValue == 'L')
     {
+      Serial1.write('L');
       poofLittle2.Off();
       poofBig2.Off();
     }
     // k is j3
     else if (buttonValue == 'k')
     {
+      Serial1.write('k');
       poofLittle3.On(4000);
       poofBig3.On(4000);
-      Serial1.write(12);
-      Serial.println("j3");
     }
     else if (buttonValue == 'K')
     {
+      Serial1.write('K');
       poofLittle3.Off();
       poofBig3.Off();
     }
@@ -917,19 +918,24 @@ void loop() {
   //pattern buttons
   if (btn1.fallingEdge())
   {
+    Serial.write(randomNumber);
+    Serial.println(randomNumber);
     start_pattern(randomNumber);
     Serial.println("btn 1 pressed");
   }
   //pattern buttons
   if (btn2.fallingEdge())
   {
+    Serial.write(randomNumber);
+    Serial.println(randomNumber);
     start_pattern(randomNumber);
     Serial.println("btn 2 pressed");
   }
   //pattern buttons
   if (btn3.fallingEdge())
-  {
-    start_pattern(6);
+  { 
+    Serial.write(7);
+    start_pattern(7);
     Serial.println("btn 3 pressed");
   }
 }
