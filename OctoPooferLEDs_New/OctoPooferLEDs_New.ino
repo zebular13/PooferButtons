@@ -23,7 +23,7 @@ OctoWS2811 leds(ledsPerStrip, displayMemory, drawingMemory, config);
 #define WHITE  0x020202
 
 int rainbowColors[180];
-elapsedMillis elapsed_time; 
+elapsedMillis frameTime; 
 int buttonValue; //controller input read through serial
 
 
@@ -90,4 +90,19 @@ void loop() {
       //find where it is in the sequence and stop it
     }
 }
+
+
+void start_pattern(int num) //the function that gets called to start the pattern
+{
+  whichPattern = num;
+  delayStarted = false;
+  pattern_position = 0; //start at the beginning of the array
+  pattern_elapsed = 0;
+}
+
+void update_pattern() {
+  if 
+}
+
+
 

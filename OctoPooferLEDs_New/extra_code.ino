@@ -67,6 +67,7 @@
 //    }
 //  }
 }
+
   
 void wipe(int color, int wait, int step, byte direction, int duration) {
   if (direction == 0) { //0 makes the direction go forward, or up the strip // any other value for direction is reverse
