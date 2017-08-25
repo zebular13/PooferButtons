@@ -91,7 +91,6 @@ Poofer poofBig2(out5);
 Poofer poofBig3(out6);
 
 long randomNumber; //random number for selecting a random pattern
-
 //-----------Moopi's fire patterns------------//
 //FOR LEDS:
 //10 is poofer 4
@@ -750,7 +749,7 @@ const int * listOfPatterns[] = {
   pattern7
 };
 const int patternLengths[] = {
-  sizeof(pattern0) / sizeof(int), //do I need to get these using progmem?
+  sizeof(pattern0) / sizeof(int), 
   sizeof(pattern1) / sizeof(int),
   sizeof(pattern2) / sizeof(int),
   sizeof(pattern3) / sizeof(int),
@@ -776,18 +775,21 @@ void start_pattern(int num) //the function that gets called to start the pattern
 void update_pattern() //runs in the loop
 {
   if (whichPattern < numberOfPatterns) {
-    const int * pattern = listOfPatterns[whichPattern];
-    int patternlength = patternLengths[whichPattern];
-
-    int poofer = pgm_read_word(pattern + pattern_position); // use PROGMEM to read the number of poofer being selected
-    unsigned int duration = pgm_read_word(pattern + (pattern_position + 1)); //
-//TAKE THIS PART OUT AND ADD IT TO 
-    if (poofer == 0) { // if the poofer is zero, create a musical rest or delay
+    playPattern();
+  }
+}
+void playPattern() {
+      const int * pattern = listOfPatterns[whichPattern];
+      int patternlength = patternLengths[whichPattern];
+      
+      int poofer = pgm_read_word(pattern + pattern_position); // use PROGMEM to read the number of poofer being selected
+      unsigned int duration = pgm_read_word(pattern + (pattern_position + 1)); 
+      
+      if (poofer == 0) { // if the poofer is zero, create a musical rest or delay
       if (delayStarted == false) {
         pattern_elapsed = 0; //we're just starting this beat, so no time has passed
         delayStarted = true;
-      } else {
-        if (pattern_elapsed > duration) {
+      } else if (pattern_elapsed > duration) {
           delayStarted = false;
           pattern_position = pattern_position + 2; //move on to the next poofer in the array
           if (pattern_position >= patternlength) {
@@ -796,20 +798,19 @@ void update_pattern() //runs in the loop
             //do nothing - this is the musical rest or beat
           }
         }
-      }
-    } else if ((poofer >= 1) && (poofer < 10)) { // if the poofer isn't zero, fire the poofer number
+      } else if ((poofer >= 1) && (poofer < 10)) { // if the poofer isn't zero, fire the poofer number
       poofer_on(poofer, duration);
       pattern_position = pattern_position + 2;
-      if (pattern_position >= patternlength) {
-        whichPattern = 100;
-      }
-    } else if (poofer == 10) { //sends the value to the led controller
+        if (pattern_position >= patternlength) {
+          whichPattern = 100;
+        }
+      } else if (poofer == 10) { //sends the value to the led controller
       Serial1.write(10);
       pattern_position = pattern_position + 2;
         if (pattern_position >= patternlength) {
           whichPattern = 100;
         }
-      }else if (poofer == 11) {
+      } else if (poofer == 11) {
       Serial1.write(11);
       pattern_position = pattern_position + 2;
         if (pattern_position >= patternlength) {
@@ -822,9 +823,7 @@ void update_pattern() //runs in the loop
           whichPattern = 100;
         }
     } 
-  }
 }
-
 void poofer_on(int num, int duration) //translates the array numbers to the corresponding poofers
 {
   if (num == 1) {
