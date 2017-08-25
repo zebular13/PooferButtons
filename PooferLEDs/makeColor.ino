@@ -7,7 +7,8 @@
 //
 //   lightness:  0 to 100 - how light the color is, 100=white, 50=color, 0=black
 //
-int makeColor(unsigned int hue, unsigned int saturation, unsigned int lightness) {
+int makeColor(unsigned int hue, unsigned int saturation, unsigned int lightness)
+{
   unsigned int red, green, blue;
   unsigned int var1, var2;
 
@@ -32,10 +33,10 @@ int makeColor(unsigned int hue, unsigned int saturation, unsigned int lightness)
   return (red << 16) | (green << 8) | blue;
 }
 
-unsigned int h2rgb(unsigned int v1, unsigned int v2, unsigned int hue) {
+unsigned int h2rgb(unsigned int v1, unsigned int v2, unsigned int hue)
+{
   if (hue < 60) return v1 * 60 + (v2 - v1) * hue;
   if (hue < 180) return v2 * 60;
   if (hue < 240) return v1 * 60 + (v2 - v1) * (240 - hue);
   return v1 * 60;
 }
-
