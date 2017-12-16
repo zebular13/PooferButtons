@@ -104,7 +104,7 @@ const int pattern0[] PROGMEM = {
   2, 500, 0, 501, //0 means the valve is closed. 501 - (how long the valve was open) is how long the valve is closed
   3, 500, 0, 501, // 501 - 500 = 10 milliseconds or 1/10th of a second
   4, 500, 0, 501,
-  
+
   2, 500, 0, 501,
   3, 500, 0, 501,
   1, 500, 0, 501,
@@ -144,12 +144,12 @@ const int pattern0[] PROGMEM = {
   1, 120, 0, 121,
   2, 120, 0, 121,
   4, 120, 0, 121,
-  
+
   1, 120, 0, 121,
   3, 25, 0, 26,
   10, 0, //start sending the yellow leds 7 milliseconds before the first burst
-  11, 0, 
-  12, 0, 
+  11, 0,
+  12, 0,
   3, 94, 0, 95,
   2, 120, 0, 121,
 
@@ -158,8 +158,8 @@ const int pattern0[] PROGMEM = {
   2, 120, 0, 121,
   3, 120, 0, 121,
   10, 0, //start sending the yellow leds 7 milliseconds before the second burst
-  11, 0, 
-  12, 0, 
+  11, 0,
+  12, 0,
   1, 120, 0, 121,
 
   //BOOM!
@@ -171,13 +171,13 @@ const int pattern0[] PROGMEM = {
   6, 500, 0, 579,
 
   //BOOM!
-  
+
   1, 800,
   2, 800,
   3, 800,
   4, 500,
   5, 500,
-  6, 500, 0,500
+  6, 500, 0, 500
 };
 ///pop goes the weasel - not too bad - a little fast
 const int pattern1[] PROGMEM = {
@@ -217,9 +217,9 @@ const int pattern1[] PROGMEM = {
 
   3, 250, 0, 251,
   1, 109, 0, 110,
-  10, 0, 
-  11, 0, 
-  12, 0, 
+  10, 0,
+  11, 0,
+  12, 0,
   1, 391, 0, 700,
   //POP!
 
@@ -236,10 +236,10 @@ const int pattern1[] PROGMEM = {
   1, 250, 0, 251,
   2, 250, 0, 550,
   //surprise burst
-  10, 0, 
-  11, 0, 
+  10, 0,
+  11, 0,
   12, 0, 0, 700,
-   
+
   1, 200,
   2, 200,
   3, 200,
@@ -278,7 +278,7 @@ const int pattern2[] PROGMEM = {
   3, 200, 0, 350,
   3, 200, 0, 300,
   1, 100, 0, 120,
-  
+
   4, 200, 0, 350,
   4, 200, 0, 2350,
 
@@ -308,7 +308,7 @@ const int pattern2[] PROGMEM = {
   //burst
   1, 100,
   2, 100,
-  3, 100, 
+  3, 100,
   4, 100,
   5, 100,
   6, 300,
@@ -331,7 +331,7 @@ const int pattern3[] PROGMEM = {
   11, 0,
   12, 0,
   //ragg mopp!
-  
+
   1, 500,
   2, 500,
   3, 500,
@@ -339,7 +339,7 @@ const int pattern3[] PROGMEM = {
   5, 500,
   5, 500,
   6, 500, 0, 700,
-  
+
   1, 500,
   2, 500,
   3, 500,
@@ -380,11 +380,11 @@ const int pattern3[] PROGMEM = {
 
   10, 0,
   11, 0,
-  12, 0, 
+  12, 0,
   2, 200, 0, 500,
   10, 0,
   11, 0,
-  12, 0, 
+  12, 0,
   2, 200, 0, 200,
   //ragg mopp!
 
@@ -413,7 +413,7 @@ const int pattern3[] PROGMEM = {
   1, 500,
   2, 500,
   3, 500, 0, 501,
-  
+
 
   1, 500,
   2, 500,
@@ -452,8 +452,8 @@ const int pattern3[] PROGMEM = {
   6, 1000, 0, 800,
   10, 0,
   11, 0,
-  12, 0,0, 700,
-  
+  12, 0, 0, 700,
+
   1, 1000,
   2, 1000,
   3, 1000,
@@ -462,10 +462,10 @@ const int pattern3[] PROGMEM = {
   6, 1000, 0, 800,
   10, 0,
   11, 0,
-  12, 0,0, 121,
+  12, 0, 0, 121,
   10, 0,
   11, 0,
-  12, 0,0, 579,
+  12, 0, 0, 579,
 
   1, 120,
   2, 120,
@@ -651,7 +651,7 @@ const int pattern6[] PROGMEM = {
   11, 0,
   12, 0,
   5, 34, 0, 35,
-  
+
   6, 120, 0, 121,
   1, 250, 0, 251,
   2, 120, 0, 121,
@@ -674,7 +674,7 @@ const int pattern6[] PROGMEM = {
   11, 0,
   12, 0,
   5, 34, 0, 35,
-  
+
   6, 120, 0, 121,
   1, 250, 0, 251,
   2, 120, 0, 121,
@@ -715,7 +715,7 @@ const int pattern7[] PROGMEM = {
   1, 350, 0, 550, //the
   1, 900, 0, 1000, //briiide
   11, 0, 0, 700, //briiide
-  
+
   5, 600, 0, 800, //all
   1, 210, 0, 310, //dressed
   2, 350, 0, 550, //in
@@ -729,7 +729,7 @@ const int pattern7[] PROGMEM = {
   3, 600, 0, 800,
   2, 210, 0, 310,
   1, 350, 0, 550,
-  
+
   1, 99, 0, 100,
   12, 0,
   1, 99, 0, 100,
@@ -749,7 +749,7 @@ const int * listOfPatterns[] = {
   pattern7
 };
 const int patternLengths[] = {
-  sizeof(pattern0) / sizeof(int), 
+  sizeof(pattern0) / sizeof(int),
   sizeof(pattern1) / sizeof(int),
   sizeof(pattern2) / sizeof(int),
   sizeof(pattern3) / sizeof(int),
@@ -779,50 +779,50 @@ void update_pattern() //runs in the loop
   }
 }
 void playPattern() {
-      const int * pattern = listOfPatterns[whichPattern];
-      int patternlength = patternLengths[whichPattern];
-      
-      int poofer = pgm_read_word(pattern + pattern_position); // use PROGMEM to read the number of poofer being selected
-      unsigned int duration = pgm_read_word(pattern + (pattern_position + 1)); 
-      
-      if (poofer == 0) { // if the poofer is zero, create a musical rest or delay
-      if (delayStarted == false) {
-        pattern_elapsed = 0; //we're just starting this beat, so no time has passed
-        delayStarted = true;
-      } else if (pattern_elapsed > duration) {
-          delayStarted = false;
-          pattern_position = pattern_position + 2; //move on to the next poofer in the array
-          if (pattern_position >= patternlength) {
-            whichPattern = 100;
-          } else {
-            //do nothing - this is the musical rest or beat
-          }
-        }
-      } else if ((poofer >= 1) && (poofer < 10)) { // if the poofer isn't zero, fire the poofer number
-      poofer_on(poofer, duration);
-      pattern_position = pattern_position + 2;
-        if (pattern_position >= patternlength) {
-          whichPattern = 100;
-        }
-      } else if (poofer == 10) { //sends the value to the led controller
-      Serial1.write(10);
-      pattern_position = pattern_position + 2;
-        if (pattern_position >= patternlength) {
-          whichPattern = 100;
-        }
-      } else if (poofer == 11) {
-      Serial1.write(11);
-      pattern_position = pattern_position + 2;
-        if (pattern_position >= patternlength) {
-          whichPattern = 100;
-        }
-      } else if (poofer == 12) {
-      Serial1.write(12);
-      pattern_position = pattern_position + 2;
-        if (pattern_position >= patternlength) {
-          whichPattern = 100;
-        }
-    } 
+  const int * pattern = listOfPatterns[whichPattern];
+  int patternlength = patternLengths[whichPattern];
+
+  int poofer = pgm_read_word(pattern + pattern_position); // use PROGMEM to read the number of poofer being selected
+  unsigned int duration = pgm_read_word(pattern + (pattern_position + 1));
+
+  if (poofer == 0) { // if the poofer is zero, create a musical rest or delay
+    if (delayStarted == false) {
+      pattern_elapsed = 0; //we're just starting this beat, so no time has passed
+      delayStarted = true;
+    } else if (pattern_elapsed > duration) {
+      delayStarted = false;
+      pattern_position = pattern_position + 2; //move on to the next poofer in the array
+      if (pattern_position >= patternlength) {
+        whichPattern = 100;
+      } else {
+        //do nothing - this is the musical rest or beat
+      }
+    }
+  } else if ((poofer >= 1) && (poofer < 10)) { // if the poofer isn't zero, fire the poofer number
+    poofer_on(poofer, duration);
+    pattern_position = pattern_position + 2;
+    if (pattern_position >= patternlength) {
+      whichPattern = 100;
+    }
+  } else if (poofer == 10) { //sends the value to the led controller
+    Serial1.write(10);
+    pattern_position = pattern_position + 2;
+    if (pattern_position >= patternlength) {
+      whichPattern = 100;
+    }
+  } else if (poofer == 11) {
+    Serial1.write(11);
+    pattern_position = pattern_position + 2;
+    if (pattern_position >= patternlength) {
+      whichPattern = 100;
+    }
+  } else if (poofer == 12) {
+    Serial1.write(12);
+    pattern_position = pattern_position + 2;
+    if (pattern_position >= patternlength) {
+      whichPattern = 100;
+    }
+  }
 }
 void poofer_on(int num, int duration) //translates the array numbers to the corresponding poofers
 {
@@ -857,7 +857,6 @@ void setup() {
   pinMode(out6, OUTPUT);
   randomSeed(analogRead(0)); //get a random number to select the function we want
 }
-
 void loop() {
   randomNumber = random(6);
 
@@ -877,11 +876,12 @@ void loop() {
   if (Serial1.available())
   { //read values from the main controller to tell which button has been pressed
     buttonValue = Serial1.read();
-    //a is b1
+    //a is blue button 1
     if (buttonValue == 'a')
     {
       Serial1.write('a');
       poofLittle1.On(4000);
+      Serial.println("black btn 1 pressed. Little poofer 1 turns on.");
     }
     else if (buttonValue == 'A')
     {
@@ -892,6 +892,7 @@ void loop() {
     {
       Serial1.write('c');
       poofLittle2.On(4000);
+      Serial.println("black btn 2 pressed. Little poofer 2 turns on.");
     }
     else if (buttonValue == 'C')
     {
@@ -902,6 +903,7 @@ void loop() {
     {
       Serial1.write('f');
       poofLittle3.On(4000);
+      Serial.println("black btn 3 pressed. Little poofer 3 turns on.");
     } else if (buttonValue == 'F')
     {
       Serial1.write('F');
@@ -911,6 +913,7 @@ void loop() {
     {
       Serial1.write('d');
       poofBig1.On(4000);
+      Serial.println("blue btn 1 pressed. Big poofer 1 turns on.");
     }
     else if (buttonValue == 'D')
     {
@@ -921,6 +924,7 @@ void loop() {
     { //e is b5
       Serial1.write('e');
       poofBig2.On(4000);
+      Serial.println("blue btn 2 pressed. Big poofer 2 turns on.");
     }
     else if (buttonValue == 'E')
     {
@@ -932,7 +936,9 @@ void loop() {
     {
       Serial1.write('b');
       poofBig3.On(4000);
-    } else if (buttonValue == 'B')
+      Serial.println("blue btn 3 pressed. Big poofer 3 turns on.");
+    }
+    else if (buttonValue == 'B')
     {
       Serial1.write('B');
       poofBig3.Off();
@@ -942,78 +948,188 @@ void loop() {
     else if (buttonValue == 'g')
     {
       Serial1.write('g');
+      poofBig1.On(4000);
+      poofBig2.On(4000);
+      poofBig3.On(4000);
       poofLittle1.On(4000);
       poofLittle2.On(4000);
       poofLittle3.On(4000);
+      Serial.println("Red btn pressed. All poofers on.");
     }
     else if  (buttonValue == 'G')
     {
       Serial1.write('G');
+      poofBig1.Off();
+      poofBig2.Off();
+      poofBig3.Off();
       poofLittle1.Off();
       poofLittle2.Off();
       poofLittle3.Off();
-    }//all big ones on
+    } //all big ones on
     else if (buttonValue == 'h')
     {
       Serial1.write('h');
-      poofBig1.On(4000);
-      poofBig2.On(4000);
-      poofBig3.On(4000);
+      poofLittle1.On(4000);
+      poofLittle2.On(4000);
+      poofLittle3.On(4000);
+      Serial.println("Yellow btn pressed. All small poofers on.");
     }
     else if  (buttonValue == 'H')
     {
       Serial1.write('H');
-      poofBig1.Off();
-      poofBig2.Off();
-      poofBig3.Off();
-    }
-    //j is x
-    else if (buttonValue == 'j')
-    {
-      Serial1.write('j');
-    }
-    else if (buttonValue == 'J')
-    {
-      Serial1.write('J');
-    }
-    // i is j1
-    else if (buttonValue == 'i')
-    {
-      Serial1.write('i');
-      poofLittle1.On(4000);
-      poofBig1.On(4000);
-    }
-    else if (buttonValue == 'I')
-    {
-      Serial1.write('I');
       poofLittle1.Off();
-      poofBig1.Off();
+      poofLittle2.Off();
+      poofLittle3.Off();
     }
-    // l is j2
-    else if (buttonValue == 'l')
+
+    //Joystick (letters proceed clockwise around joystick)
+    //'m' is the top position
+    else if (buttonValue == 'm')
     {
-      Serial1.write('l');
+      Serial1.write('m');
       poofLittle2.On(4000);
       poofBig2.On(4000);
+      Serial.println("Joystick in top position. Big2 and small2 on.");
     }
-    else if (buttonValue == 'L')
+    else if (buttonValue == 'M')
     {
-      Serial1.write('L');
+      Serial1.write('M');
       poofLittle2.Off();
       poofBig2.Off();
     }
-    // k is j3
-    else if (buttonValue == 'k')
+    else if (buttonValue == 'n')
     {
-      Serial1.write('k');
+      Serial1.write('n');
+      poofLittle2.On(4000);
+      poofBig2.On(4000);
       poofLittle3.On(4000);
       poofBig3.On(4000);
+      Serial.println("Joystick in top right position. Big2, small2, big3, small3 on.");
     }
-    else if (buttonValue == 'K')
+    else if (buttonValue == 'N')
     {
-      Serial1.write('K');
+      Serial1.write('N');
+      poofLittle2.Off();
+      poofBig2.Off();
       poofLittle3.Off();
       poofBig3.Off();
+    }
+    else if (buttonValue == 'o')
+    {
+      Serial1.write('o');
+      poofLittle3.On(4000);
+      poofBig3.On(4000);
+      Serial.println("Joystick in right position. Big3, small3 on.");
+    }
+    else if (buttonValue == 'O')
+    {
+      Serial1.write('O');
+      poofLittle3.Off();
+      poofBig3.Off();
+    }
+
+    else if (buttonValue == 'p')
+    {
+      Serial1.write('p');
+      poofLittle1.On(4000);
+      poofLittle2.On(4000);
+      poofLittle3.On(4000);
+      Serial.println("Joystick in lower right position. All little poofers on.");
+    }
+    else if (buttonValue == 'P')
+    {
+      Serial1.write('P');
+      poofLittle1.Off();
+      poofLittle2.Off();
+      poofLittle3.Off();
+    }
+
+    //bottom position of the joystick
+    else if (buttonValue == 'q')
+    {
+      Serial1.write('q');
+      poofLittle1.On(4000);
+      poofBig1.On(4000);
+      poofLittle3.On(4000);
+      poofBig3.On(4000);
+      Serial.println("Joystick in bottom position. Big1, small1, big3, small3 on.");
+    }
+    else if (buttonValue == 'Q')
+    {
+      Serial1.write('Q');
+      poofLittle1.Off();
+      poofBig1.Off();
+      poofLittle3.Off();
+      poofBig3.Off();
+    }
+    else if (buttonValue == 'r')
+    {
+      Serial1.write('r');
+      poofBig1.On(4000);
+      poofBig2.On(4000);
+      poofBig3.On(4000);
+      Serial.println("Joystick in lower left position. All big poofers on.");
+    }
+    else if (buttonValue == 'R')
+    {
+      Serial1.write('R');
+      poofBig1.Off();
+      poofBig2.Off();
+      poofBig3.Off();
+    }
+    else if (buttonValue == 's')
+    {
+      Serial1.write('s');
+      poofLittle1.On(4000);
+      poofBig1.On(4000);
+      Serial.println("Joystick in left position. Big1, small1, on.");
+    }
+    else if (buttonValue == 'S')
+    {
+      Serial1.write('S');
+      poofLittle1.Off();
+      poofBig1.Off();
+    }
+    else if (buttonValue == 't')
+    {
+      Serial1.write('t');
+      poofLittle1.On(4000);
+      poofBig1.On(4000);
+      poofLittle2.On(4000);
+      poofBig2.On(4000);
+      Serial.println("Joystick in top left position. Big1, small1, big2, small 2 on.");
+    }
+    else if (buttonValue == 'T')
+    {
+      Serial1.write('T');
+      poofLittle1.Off();
+      poofBig1.Off();
+      poofLittle2.Off();
+      poofBig2.Off();
+    }
+
+    //when the joystick returns to center position it turns them off
+    else if (buttonValue == 'u')
+    {
+      Serial1.write('u');
+      poofLittle1.Off();
+      poofBig1.Off();
+      poofLittle2.Off();
+      poofBig2.Off();
+      poofLittle3.Off();
+      poofBig3.Off();
+      Serial.println("Joystick in middle position. All off.");
+    }
+    //default to off, just in case (might cause problems)
+    else
+    {
+      poofLittle1.Off();
+      poofBig1.Off();
+      poofLittle2.Off();
+      poofBig2.Off();
+      poofLittle3.Off();
+      poofBig3.Off();
+      Serial.println("Joystick in unknown position. All off.");
     }
   }
 
@@ -1038,4 +1154,3 @@ void loop() {
     Serial.println("btn 3 pressed");
   }
 }
-
