@@ -84,21 +84,8 @@ long randomNumber; //random number for selecting a random pattern
 //11 is poofer 5
 //12 is poofer 6
 
-int eighthnote = 100;
-int quarternote = 200;
-int dotquarternote = 300;
-int halfnote = 400;
-int wholenote = 800;
-
-int eighthrest = 101;
-int quarterrest = 201;
-int dotquarterrest = 301;
-int halfrest = 401;
-int wholerest = 801;
-
-//Safety Dance
+//groovy 
 const int pattern0[] PROGMEM = {
-  //safety dance
   10, 0,// 12 equals a vertical led animation, duration is 700
   10, 0,
   1, 200, 0, 350,
@@ -129,113 +116,62 @@ const int pattern0[] PROGMEM = {
   2, 100, 0, 120,
 
   4, 200, 0, 350,
-  4, 200, 0, 2350,
+  4, 200, 0, 350,
 
   //burst
   1, 100,
   2, 100,
   4, 100,
   5, 100, 101,
-
-  //burst
-  1, 80,
-  2, 80,
-  4, 80,
-  5, 80, 0, 81
 };
 
-//Ragg Mopp for two poofers 4/4 timing
-const int pattern1[] PROGMEM = {
-  //ragg! 
-  1, 200,
-  2, 200,
-  4, 200,
-  5, 200, 0, 201,
-  //mopp!
-  1, 200,
-  2, 200,
-  4, 200,
-  5, 190, 0, 201,
 
+//Not ragg mop
+const int pattern1[] PROGMEM = {
   //doodley de
-  5, eighthnote, 0, 101,
-  5, eighthnote, 0, 101,
-  2, 190, 0, 101,
+  5, 120, 0, 121,
+  5, 120, 0, 121,
+  2, 250, 0, 251,
   //daaa
-  4, 300, 0, 301,
+  4, 350, 0, 351,
   //da
-  2, 100, 0, 101,
+  2, 120, 0, 121,
   //da
-  5, 100, 0, 101,
+  5, 120, 0, 121,
   //da
-  5, 250, 0, 101,
+  5, 600, 0, 851,
   
-  //doodley de
-  5, 100, 0, 101,
-  5, 100, 0, 101,
-  2, 190, 0, 201,
+  5, 120, 0, 121,
+  5, 120, 0, 121,
+  2, 250, 0, 251,
   //daaa
-  4, 300, 0, 301,
+  4, 350, 0, 351,
   //da
-  2, 100, 0, 101,
+  2, 120, 0, 121,
   //da
-  5, 100, 0, 101,
+  5, 120, 0, 121,
   //da
-  5, 250, 0, 301,
-  
-  //doodley de
-  5, 100, 0, 101,
-  5, 100, 0, 101,
-  2, 190, 0, 201,
-  //daaa
-  4, 300, 0, 301,
-  //da
-  2, 100, 0, 101,
-  //da
-  5, 100, 0, 101,
-  //da
-  5, 250, 0, 301,
-  
-  //doodley de
-  5, 100, 0, 101,
-  5, 0, 101,
-  2, 190, 0, 201,
-  //daaa
-  4, 300, 0, 301,
-  //da
-  2, 100, 0, 101,
-  //da
-  5, 100, 0, 101,
-  //da
-  5, 250, 0, 301,
+  5, 600, 0, 851,
 
   //R.-A.-G.-G. - M.-O.-P.-P
-  1, 200, 0, 201,
-  2, 200, 0, 201,
-  1, 200, 0, 201,
-  2, 200, 0, 201,
-  4, 200, 0, 201,
-  5, 200, 0, 201,
-  4, 200, 0, 201,
-  5, 190, 0, 201,
+  1, 250, 0, 251,
+  2, 250, 0, 251,
+  1, 250, 0, 251,
+  2, 250, 0, 261,
+  4, 250, 0, 251,
+  5, 250, 0, 251,
+  4, 250, 0, 251,
+  5, 250, 0, 461,
 
   //Ragg mopp!  (plus flourish)
   //ragg! 
-  1, 200,
-  2, 200,
-  4, 200,
-  5, 200, 0, 201,
-  //mopp!
-  1, 200,
-  2, 200,
-  4, 200,
-  5, 200, 0, 201
+  4, 1000,
+  5, 1000, 0, 1001
 };
-//Mexican Hat Dance for 2 poofers 3/3 timing
+//Mos Eisley cantina for 2 poofers 3/3 timing - pretty good
 const int pattern2[] PROGMEM = {
   //  Di-di di-dee-dee-di-dee,
-  1, 120, 0, 121,
-  1, 120, 0, 121,
+  1, 250, 0, 251,
   2, 250, 0, 251,
   5, 250, 0, 251,
   2, 250, 0, 251,
@@ -243,56 +179,121 @@ const int pattern2[] PROGMEM = {
   2, 250, 0, 251,
   1, 120, 0, 121,
   4, 250, 0, 251,
-  5, 500, 0, 1010,
+  1, 120, 0, 121,
+  4, 250, 0, 251,
+
+  5, 250, 0, 251,
+  4,  250, 0, 501,
+
+  2, 250, 0, 251,
+  1, 960, 
+  4, 960, 0, 2010,
+  
   //  Di-di di-dee-dee-di-doo,
-  5, 120, 0, 121,
-  5, 120, 0, 121,
+  2, 250, 0, 251,
+  5, 250, 0, 251,
   1, 250, 0, 251,
   2, 250, 0, 251,
-  1, 250, 0, 251,
+  5, 250, 0, 251,
   2, 250, 0, 251,
-  1, 250, 0, 251,
-  5, 120, 0, 121,
-  1, 250, 0, 251,
-  4, 500, 0, 1010,
-  //  Di-di di-dee-dee-di-dee,
-  2, 120, 0, 121,
-  2, 120, 0, 121,
-  5, 250, 0, 251,
-  1, 250, 0, 251,
-  5, 250, 0, 251,
-  1, 250, 0, 251,
-  5, 250, 0, 251,
-  2, 120, 0, 121,
-  4, 250, 0, 251,
-  1, 500, 0, 501,
-  //  Dee-di-dee-dee di dee-
-  1, 250, 0, 251,
   1, 120, 0, 121,
+  4, 250, 0, 251,
+  1, 120, 0, 121,
+  4, 250, 0, 251,
+
+  5, 250, 0, 251,
+  4, 250, 0, 501,
+
   2, 250, 0, 251,
+  1, 960, 
+  4, 960, 0, 1510,
+};
+
+const int pattern3[] PROGMEM = {
+  //choo choo train - 18seconds at 1.5x speed
+  1, 1000, 0, 1101,
+  2, 1000, 0, 1301,
+
+  1, 900, 0, 901,
+  2, 900, 0, 921,
+
+  1, 220, 0, 221,
+  1, 180, 0, 151,
+  2, 220, 0, 221,
+  2, 180, 0, 151,
+
+  1, 220, 0, 221,
+  1, 150, 0, 151,
+  2, 220, 0, 221,
+  2, 150, 0, 151,
+
+  1, 200, 0, 201,
+  1, 150, 0, 151,
+  2, 200, 0, 201,
+  2, 150, 0, 151,
+
+  1, 200, 0, 201,
+  1, 150, 0, 151,
+  2, 200, 0, 201,
+  2, 150, 0, 151,
+
+  1, 150, 0, 151,
+  1, 120, 0, 121,
+  2, 150, 0, 151,
   2, 120, 0, 121,
-  5, 250, 0, 251,
-  5, 250, 0, 251,
-  5, 120, 0, 121,
-  2, 250, 0, 251,
-  1, 500, 0, 1010,
-  //pause
-  5, 250, 0, 251,
-  //O-LE!
-  1, 800,
-  2, 800,
-  5, 800
+  
+  1, 150, 0, 151,
+  1, 120, 0, 121,
+  2, 150, 0, 151,
+  2, 120, 0, 121,
+
+  1, 120, 0, 121,
+  1, 100, 0, 101,
+  2, 120, 0, 121,
+  2, 100, 0, 101,
+
+  1, 120, 0, 121,
+  1, 100, 0, 101,
+  2, 120, 0, 121,
+  2, 100, 0, 101,
+
+  1, 100, 0, 101,
+  1, 80, 0, 81,
+  2, 100, 0, 101,
+  2, 80, 0, 81,
+
+  1, 100, 0, 101,
+  1, 80, 0, 81,
+  2, 100, 0, 101,
+  2, 80, 0, 81,
+
+  1, 100, 0, 101,
+  1, 80, 0, 81,
+  2, 100, 0, 101,
+  2, 80, 0, 81,
+
+  1, 100, 0, 101,
+  1, 80, 0, 81,
+  2, 100, 0, 101,
+  2, 80, 0, 581,
+
+  1, 1000, 
+  2, 1000, 
+  4, 1000,
+  5, 1000, 0, 1501,
 };
 
 const int * listOfPatterns[] = {
   pattern0,
   pattern1,
-  pattern2
+  pattern2,
+  pattern3
 };
 const int patternLengths[] = {
   sizeof(pattern0) / sizeof(int),
   sizeof(pattern1) / sizeof(int),
-  sizeof(pattern2) / sizeof(int)
+  sizeof(pattern2) / sizeof(int),
+  sizeof(pattern3) / sizeof(int)
 };
 const int numberOfPatterns = sizeof(listOfPatterns) / sizeof(const int *);
 int pattern_position;
@@ -319,7 +320,8 @@ void playPattern() {
   int patternlength = patternLengths[whichPattern];
 
   int poofer = pgm_read_word(pattern + pattern_position); // use PROGMEM to read the number of poofer being selected
-  unsigned int duration = pgm_read_word(pattern + (pattern_position + 1));
+  unsigned int duration_raw = pgm_read_word(pattern + (pattern_position + 1));
+  unsigned int duration = duration_raw*1.5;
 
   if (poofer == 0) { // if the poofer is zero, create a musical rest or delay
     if (delayStarted == false) {
@@ -363,7 +365,6 @@ void playPattern() {
 void poofer_on(int num, int duration) //translates the array numbers to the corresponding poofers
 {
   if (num == 1) {
-    poofLittle1.On(duration);
   } else if (num == 2) {
     poofLittle2.On(duration);
   } else if (num == 3) {
@@ -668,23 +669,24 @@ void loop() {
   }
 
   //magic lamp buttons
-  if (btn1.fallingEdge()) //shave and a haircut
+  if (btn1.fallingEdge()) //safety dance
   {
     //    Serial.println(randomNumber);
     //    start_pattern(randomNumber);
     start_pattern(0);
-    Serial.println("green btn 1 pressed");
+    Serial.println("green btn 1 pressed safety dance");
   }
   //pattern buttons
   if (btn2.fallingEdge()) //mexican hat dance
   {
-   start_pattern(1);
-    Serial.println("red btn 2 pressed");
+   start_pattern(2);
+    Serial.println("red btn 2 pressed cantina");
   }
   //pattern buttons
   if (btn3.fallingEdge()) //ragg mopp
   {
-    start_pattern(2);
-    Serial.println("yellow btn 3 pressed");
+    start_pattern(3);
+    Serial.println("yellow btn 3 pressed choo choo train");
   }
 }
+
