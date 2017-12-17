@@ -83,412 +83,216 @@ long randomNumber; //random number for selecting a random pattern
 //10 is poofer 4
 //11 is poofer 5
 //12 is poofer 6
-//if we have enough time, add code for the short bursts
 
-//The choo choo train
+int eighthnote = 100;
+int quarternote = 200;
+int dotquarternote = 300;
+int halfnote = 400;
+int wholenote = 800;
+
+int eighthrest = 101;
+int quarterrest = 201;
+int dotquarterrest = 301;
+int halfrest = 401;
+int wholerest = 801;
+
+//Safety Dance
 const int pattern0[] PROGMEM = {
-  1, 500, 0, 501, // 1 is the valve #, 500 is how long the valve is open in milliseconds,
-  2, 500, 0, 501, //0 means the valve is closed. 501 - (how long the valve was open) is how long the valve is closed
-  3, 500, 0, 501, // 501 - 500 = 10 milliseconds or 1/10th of a second
-  4, 500, 0, 501,
-
-  2, 500, 0, 501,
-  3, 500, 0, 501,
-  1, 500, 0, 501,
-  4, 500, 0, 501,
-
-  3, 500, 0, 501,
-  1, 500, 0, 501,
-  2, 500, 0, 501,
-  6, 500, 0, 501,
-
-  1, 500, 0, 501,
-  2, 500, 0, 501,
-  3, 500, 0, 501,
-  4, 500, 0, 501,
-  //faster!
-  2, 250, 0, 251,
-  3, 250, 0, 251,
-  2, 250, 0, 251,
-  5, 250, 0, 251,
-
-  3, 250, 0, 251,
-  1, 250, 0, 251,
-  2, 250, 0, 251,
-  6, 250, 0, 251,
-
-  1, 250, 0, 251,
-  2, 250, 0, 251,
-  3, 250, 0, 251,
-  4, 250, 0, 251,
-
-  2, 250, 0, 251,
-  3, 250, 0, 251,
-  1, 250, 0, 251,
-  4, 250, 0, 251,
-  //faster and faster!
-  3, 120, 0, 121,
-  1, 120, 0, 121,
-  2, 120, 0, 121,
-  4, 120, 0, 121,
-
-  1, 120, 0, 121,
-  3, 25, 0, 26,
-  10, 0, //start sending the yellow leds 7 milliseconds before the first burst
-  11, 0,
-  12, 0,
-  3, 94, 0, 95,
-  2, 120, 0, 121,
-
-
-  4, 120, 0, 121,
-  2, 120, 0, 121,
-  3, 120, 0, 121,
-  10, 0, //start sending the yellow leds 7 milliseconds before the second burst
-  11, 0,
-  12, 0,
-  1, 120, 0, 121,
-
-  //BOOM!
-  1, 800,
-  2, 800,
-  3, 800,
-  4, 500,
-  5, 500,
-  6, 500, 0, 579,
-
-  //BOOM!
-
-  1, 800,
-  2, 800,
-  3, 800,
-  4, 500,
-  5, 500,
-  6, 500, 0, 500
-};
-///pop goes the weasel - not too bad - a little fast
-const int pattern1[] PROGMEM = {
-  //Round and round the mulberry bush
-  2, 500, 0, 501,
-  3, 500, 0, 501,
-  1, 402, 0, 403,
-  10, 0,
-  1, 197, 0, 198,
-  2, 250, 0, 251,
-  3, 250, 0, 251,
-  4, 250, 0, 251,
-
-  2, 250, 0, 251,
-  3, 500, 0, 810,
-  //the monkey chased the weasel
-  1, 250, 0, 251,
-  2, 250, 0, 251,
-  3, 250, 0, 251,
-
-  1, 500, 0, 501,
-
-  1, 250, 0, 251,
-  2, 250, 0, 251,
-  3, 250, 0, 251,
-
-  1, 500, 0, 810,
-  //the monkey thought 'twas all in good fun
-  2, 500, 0, 501,
-  3, 250, 0, 251,
-  1, 250, 0, 351,
-
-  2, 250, 0, 251,
-  3, 250, 0, 251,
-  1, 250, 0, 251,
-  2, 250, 0, 251,
-
-  3, 250, 0, 251,
-  1, 109, 0, 110,
-  10, 0,
-  11, 0,
-  12, 0,
-  1, 391, 0, 700,
-  //POP!
-
-  1, 900,
-  2, 900,
-  3, 900,
-  4, 900,
-  5, 900,
-  6, 900,  0, 1500,
-  //Goes
-  2, 250, 0, 351,
-  //the weasel
-  3, 250, 0, 251,
-  1, 250, 0, 251,
-  2, 250, 0, 550,
-  //surprise burst
-  10, 0,
-  11, 0,
-  12, 0, 0, 700,
-
-  1, 200,
-  2, 200,
-  3, 200,
-  4, 100,
-  5, 100,
-  6, 700
-};
-//Safety Dance/ Shave and a Haircut
-const int pattern2[] PROGMEM = {
   //safety dance
-  12, 0,// 12 equals a vertical led animation, duration is 700
-  12, 0,
-  3, 200, 0, 350,
-  3, 200, 0, 350,
-
-  6, 200, 0, 350,
-  6, 200, 0, 280,
+  10, 0,// 12 equals a vertical led animation, duration is 700
   10, 0,
-  10, 0, 0, 70,
-  3, 200, 0, 350,
-  3, 200, 0, 300,
-  1, 100, 0, 120,
+  1, 200, 0, 350,
+  1, 200, 0, 350,
+
+  4, 200, 0, 350,
+  4, 200, 0, 280,
+  11, 0,
+  11, 0, 0, 70,
+  1, 200, 0, 350,
+  1, 200, 0, 201,
+  2, 100, 0, 120,
 
   4, 200, 0, 350,
   4, 200, 0, 350,
 
-  12, 0,
-  12, 0,
-  3, 200, 0, 350,
-  3, 200, 0, 350,
+  10, 0,
+  10, 0,
+  1, 200, 0, 350,
+  1, 200, 0, 350,
 
-  6, 200, 0, 350,
-  6, 200, 0, 280,
+  4, 200, 0, 350,
+  4, 200, 0, 280,
   10, 0,
   10, 0, 0, 70,
-  3, 200, 0, 350,
-  3, 200, 0, 300,
-  1, 100, 0, 120,
+  1, 200, 0, 350,
+  1, 200, 0, 201,
+  2, 100, 0, 120,
 
   4, 200, 0, 350,
   4, 200, 0, 2350,
 
-
-  //shave and a haircut
-  1, 100, 0, 250,
-  1, 100, 0, 150,
-
-  1, 100, 0, 150,
-  4, 100, 0, 400,
-  10, 0,
-  11, 0,
-  12, 0,
-  1, 100, 0, 300,
-  10, 0,
-  11, 0,
-  12, 0,
-  1, 100, 0, 400,
   //burst
   1, 100,
   2, 100,
-  3, 100,
   4, 100,
-  5, 100,
-  6, 300,
+  5, 100, 101,
 
   //burst
   1, 80,
   2, 80,
-  3, 80,
   4, 80,
-  5, 80,
-  6, 80, 0, 280,
+  5, 80, 0, 81
 };
 
-//Ragg Mopp
-const int pattern3[] PROGMEM = {
-
+//Ragg Mopp for two poofers 4/4 timing
+const int pattern1[] PROGMEM = {
   //ragg! 
-  1, 250,
-  2, 250,
-  4, 250,
-  5, 250, 0, 261,
+  1, 200,
+  2, 200,
+  4, 200,
+  5, 200, 0, 201,
   //mopp!
-  1, 250,
-  2, 250,
-  4, 250,
-  5, 250, 0, 281,
+  1, 200,
+  2, 200,
+  4, 200,
+  5, 190, 0, 201,
 
   //doodley de
-  5, 500, 0, 501,
-  5, 120, 0, 125,
-  2, 120, 0, 131,
+  5, eighthnote, 0, 101,
+  5, eighthnote, 0, 101,
+  2, 190, 0, 101,
   //daaa
-  4, 750, 0, 751,
+  4, 300, 0, 301,
   //da
-  2, 250, 0, 121,
+  2, 100, 0, 101,
   //da
-  5, 120, 0, 121,
+  5, 100, 0, 101,
   //da
-  5, 120, 0, 131,
+  5, 250, 0, 101,
   
   //doodley de
-  5, 500, 0, 501,
-  5, 120, 0, 125,
-  2, 120, 0, 131,
+  5, 100, 0, 101,
+  5, 100, 0, 101,
+  2, 190, 0, 201,
   //daaa
-  4, 750, 0, 751,
+  4, 300, 0, 301,
   //da
-  2, 250, 0, 121,
+  2, 100, 0, 101,
   //da
-  5, 120, 0, 121,
+  5, 100, 0, 101,
   //da
-  5, 120, 0, 131,
+  5, 250, 0, 301,
   
   //doodley de
-  5, 500, 0, 501,
-  5, 120, 0, 125,
-  2, 120, 0, 131,
+  5, 100, 0, 101,
+  5, 100, 0, 101,
+  2, 190, 0, 201,
   //daaa
-  4, 750, 0, 751,
+  4, 300, 0, 301,
   //da
-  2, 250, 0, 121,
+  2, 100, 0, 101,
   //da
-  5, 120, 0, 121,
+  5, 100, 0, 101,
   //da
-  5, 120, 0, 131,
+  5, 250, 0, 301,
   
   //doodley de
-  5, 500, 0, 501,
-  5, 120, 0, 125,
-  2, 120, 0, 131,
+  5, 100, 0, 101,
+  5, 0, 101,
+  2, 190, 0, 201,
   //daaa
-  4, 750, 0, 751,
+  4, 300, 0, 301,
   //da
-  2, 250, 0, 121,
+  2, 100, 0, 101,
   //da
-  5, 120, 0, 121,
+  5, 100, 0, 101,
   //da
-  5, 120, 0, 131,
+  5, 250, 0, 301,
 
   //R.-A.-G.-G. - M.-O.-P.-P
-  1, 250, 0, 261,
-  2, 250, 0, 261,
-  1, 250, 0, 261,
-  2, 250, 0, 271,
-  4, 250, 0, 261,
-  5, 250, 0, 261,
-  4, 250, 0, 261,
-  5, 250, 0, 281,
+  1, 200, 0, 201,
+  2, 200, 0, 201,
+  1, 200, 0, 201,
+  2, 200, 0, 201,
+  4, 200, 0, 201,
+  5, 200, 0, 201,
+  4, 200, 0, 201,
+  5, 190, 0, 201,
 
   //Ragg mopp!  (plus flourish)
   //ragg! 
-  1, 250,
-  2, 250,
-  4, 250,
-  5, 250, 0, 261,
+  1, 200,
+  2, 200,
+  4, 200,
+  5, 200, 0, 201,
   //mopp!
-  1, 250,
-  2, 250,
-  4, 250,
-  5, 250, 0, 251
+  1, 200,
+  2, 200,
+  4, 200,
+  5, 200, 0, 201
 };
-//Mexican Hat Dance
-const int pattern4[] PROGMEM = {
+//Mexican Hat Dance for 2 poofers 3/3 timing
+const int pattern2[] PROGMEM = {
   //  Di-di di-dee-dee-di-dee,
   1, 120, 0, 121,
   1, 120, 0, 121,
   2, 250, 0, 251,
-  3, 250, 0, 251,
+  5, 250, 0, 251,
   2, 250, 0, 251,
-  3, 250, 0, 251,
+  5, 250, 0, 251,
   2, 250, 0, 251,
   1, 120, 0, 121,
   4, 250, 0, 251,
-  3, 500, 0, 1010,
+  5, 500, 0, 1010,
   //  Di-di di-dee-dee-di-doo,
-  3, 120, 0, 121,
-  3, 120, 0, 121,
+  5, 120, 0, 121,
+  5, 120, 0, 121,
   1, 250, 0, 251,
   2, 250, 0, 251,
   1, 250, 0, 251,
   2, 250, 0, 251,
   1, 250, 0, 251,
-  3, 120, 0, 121,
+  5, 120, 0, 121,
   1, 250, 0, 251,
   4, 500, 0, 1010,
   //  Di-di di-dee-dee-di-dee,
   2, 120, 0, 121,
   2, 120, 0, 121,
-  3, 250, 0, 251,
+  5, 250, 0, 251,
   1, 250, 0, 251,
-  3, 250, 0, 251,
+  5, 250, 0, 251,
   1, 250, 0, 251,
-  3, 250, 0, 251,
+  5, 250, 0, 251,
   2, 120, 0, 121,
-  6, 250, 0, 251,
+  4, 250, 0, 251,
   1, 500, 0, 501,
   //  Dee-di-dee-dee di dee-
   1, 250, 0, 251,
   1, 120, 0, 121,
   2, 250, 0, 251,
   2, 120, 0, 121,
-  3, 250, 0, 251,
-  3, 250, 0, 251,
-  3, 120, 0, 121,
+  5, 250, 0, 251,
+  5, 250, 0, 251,
+  5, 120, 0, 121,
   2, 250, 0, 251,
   1, 500, 0, 1010,
   //pause
-  3, 250, 0, 251,
+  5, 250, 0, 251,
   //O-LE!
   1, 800,
   2, 800,
-  3, 800,
+  5, 800
 };
 
-// Wedding March
-const int pattern5[] PROGMEM = {
-  10, 0,
-  0, 700,
-  4, 600, 0, 800, //here
-  1, 210, 0, 310, //comes
-  1, 350, 0, 550, //the
-  1, 900, 0, 1000, //briiide
-  11, 0, 0, 700, //briiide
-
-  5, 600, 0, 800, //all
-  1, 210, 0, 310, //dressed
-  2, 350, 0, 550, //in
-  1, 900, 0, 1000, //whiite
-  12, 0, 0, 700, //whiite
-
-  6, 600, 0, 800,
-  1, 210, 0, 310,
-  2, 350, 0, 550,
-
-  3, 600, 0, 800,
-  2, 210, 0, 310,
-  1, 350, 0, 550,
-
-  1, 99, 0, 100,
-  12, 0,
-  1, 99, 0, 100,
-  1, 400, 0, 600,
-  6, 210, 0, 310,
-  1, 310, 0, 410,
-  1, 1100, 0, 1210,
-};
 const int * listOfPatterns[] = {
   pattern0,
   pattern1,
-  pattern2,
-  pattern3,
-  pattern4,
-  pattern5
+  pattern2
 };
 const int patternLengths[] = {
   sizeof(pattern0) / sizeof(int),
   sizeof(pattern1) / sizeof(int),
-  sizeof(pattern2) / sizeof(int),
-  sizeof(pattern3) / sizeof(int),
-  sizeof(pattern4) / sizeof(int),
-  sizeof(pattern5) / sizeof(int)
+  sizeof(pattern2) / sizeof(int)
 };
 const int numberOfPatterns = sizeof(listOfPatterns) / sizeof(const int *);
 int pattern_position;
@@ -496,7 +300,7 @@ elapsedMillis pattern_elapsed;
 bool delayStarted;
 int whichPattern = 100;
 
-void start_pattern(int num) //the function that gets called to start the pattern
+void start_pattern(int num) //the function that gets called by the buttons to start the pattern
 {
   whichPattern = num;
   delayStarted = false;
@@ -611,7 +415,7 @@ void loop() {
     if (buttonValue == 'd')
     {
       Serial1.write('d');
-      poofLittle1.On(4000);
+      poofLittle1.On(3000);
       Serial.println("black btn 1 pressed. Little poofer 1 turns on.");
     }
     else if (buttonValue == 'D')
@@ -622,7 +426,7 @@ void loop() {
     else if (buttonValue == 'c')
     {
       Serial1.write('c');
-      poofLittle2.On(4000);
+      poofLittle2.On(3000);
       Serial.println("black btn 2 pressed. Little poofer 2 turns on.");
     }
     else if (buttonValue == 'C')
@@ -633,7 +437,7 @@ void loop() {
     else if (buttonValue == 'f')
     {
       Serial1.write('f');
-      poofLittle3.On(4000);
+      poofLittle3.On(3000);
       Serial.println("black btn 3 pressed. Little poofer 3 turns on.");
     } else if (buttonValue == 'F')
     {
@@ -643,7 +447,7 @@ void loop() {
     else if (buttonValue == 'a')
     {
       Serial1.write('a');
-      poofBig1.On(4000);
+      poofBig1.On(3000);
       Serial.println("blue btn 1 pressed. Big poofer 1 turns on.");
     }
     else if (buttonValue == 'A')
@@ -654,7 +458,7 @@ void loop() {
     else if (buttonValue == 'e')
     { 
       Serial1.write('e');
-      poofBig2.On(4000);
+      poofBig2.On(3000);
       Serial.println("blue btn 2 pressed. Big poofer 2 turns on.");
     }
     else if (buttonValue == 'E')
@@ -665,7 +469,7 @@ void loop() {
     else if (buttonValue == 'b')
     {
       Serial1.write('b');
-      poofBig3.On(4000);
+      poofBig3.On(3000);
       Serial.println("blue btn 3 pressed. Big poofer 3 turns on.");
     }
     else if (buttonValue == 'B')
@@ -678,12 +482,12 @@ void loop() {
     else if (buttonValue == 'h')
     {
       Serial1.write('h');
-      poofBig1.On(4000);
-      poofBig2.On(4000);
-      poofBig3.On(4000);
-      poofLittle1.On(4000);
-      poofLittle2.On(4000);
-      poofLittle3.On(4000);
+      poofBig1.On(3000);
+      poofBig2.On(3000);
+      poofBig3.On(3000);
+      poofLittle1.On(3000);
+      poofLittle2.On(3000);
+      poofLittle3.On(3000);
       Serial.println("Red btn pressed. All poofers on.");
     }
     else if  (buttonValue == 'H')
@@ -699,9 +503,9 @@ void loop() {
     else if (buttonValue == 'g')
     {
       Serial1.write('g');
-      poofLittle1.On(4000);
-      poofLittle2.On(4000);
-      poofLittle3.On(4000);
+      poofLittle1.On(3000);
+      poofLittle2.On(3000);
+      poofLittle3.On(3000);
       Serial.println("Yellow btn pressed. All small poofers on.");
     }
     else if  (buttonValue == 'G')
@@ -717,8 +521,8 @@ void loop() {
     else if (buttonValue == 'm')
     {
       Serial1.write('m');
-      poofLittle1.On(4000);
-      poofBig1.On(4000);
+      poofLittle1.On(3000);
+      poofBig1.On(3000);
       Serial.println("Joystick in top position. Big1 and small1 on.");
     }
     else if (buttonValue == 'M')
@@ -730,10 +534,10 @@ void loop() {
     else if (buttonValue == 'n')
     {
       Serial1.write('n');
-      poofLittle2.On(4000);
-      poofBig2.On(4000);
-      poofLittle1.On(4000);
-      poofBig1.On(4000);
+      poofLittle2.On(3000);
+      poofBig2.On(3000);
+      poofLittle1.On(3000);
+      poofBig1.On(3000);
       Serial.println("Joystick in top right position. Big2, small2, big1, small1 on.");
     }
     else if (buttonValue == 'N')
@@ -747,8 +551,8 @@ void loop() {
     else if (buttonValue == 'o')
     {
       Serial1.write('o');
-      poofLittle2.On(4000);
-      poofBig2.On(4000);
+      poofLittle2.On(3000);
+      poofBig2.On(3000);
       Serial.println("Joystick in right position. Big2, small2 on.");
     }
     else if (buttonValue == 'O')
@@ -761,9 +565,9 @@ void loop() {
     else if (buttonValue == 'p')
     {
       Serial1.write('p');
-      poofLittle1.On(4000);
-      poofLittle2.On(4000);
-      poofLittle3.On(4000);
+      poofLittle1.On(3000);
+      poofLittle2.On(3000);
+      poofLittle3.On(3000);
       Serial.println("Joystick in lower right position. All little poofers on.");
     }
     else if (buttonValue == 'P')
@@ -778,10 +582,10 @@ void loop() {
     else if (buttonValue == 'q')
     {
       Serial1.write('q');
-      poofLittle2.On(4000);
-      poofBig2.On(4000);
-      poofLittle3.On(4000);
-      poofBig3.On(4000);
+      poofLittle2.On(3000);
+      poofBig2.On(3000);
+      poofLittle3.On(3000);
+      poofBig3.On(3000);
       Serial.println("Joystick in bottom position. Big2, small2, big3, small3 on.");
     }
     else if (buttonValue == 'Q')
@@ -795,9 +599,9 @@ void loop() {
     else if (buttonValue == 'r')
     {
       Serial1.write('r');
-      poofBig1.On(4000);
-      poofBig2.On(4000);
-      poofBig3.On(4000);
+      poofBig1.On(3000);
+      poofBig2.On(3000);
+      poofBig3.On(3000);
       Serial.println("Joystick in lower left position. All big poofers on.");
     }
     else if (buttonValue == 'R')
@@ -810,8 +614,8 @@ void loop() {
     else if (buttonValue == 's')
     {
       Serial1.write('s');
-      poofLittle3.On(4000);
-      poofBig3.On(4000);
+      poofLittle3.On(3000);
+      poofBig3.On(3000);
       Serial.println("Joystick in left position. Big3, small3, on.");
     }
     else if (buttonValue == 'S')
@@ -823,10 +627,10 @@ void loop() {
     else if (buttonValue == 't')
     {
       Serial1.write('t');
-      poofLittle1.On(4000);
-      poofBig1.On(4000);
-      poofLittle3.On(4000);
-      poofBig3.On(4000);
+      poofLittle1.On(3000);
+      poofBig1.On(3000);
+      poofLittle3.On(3000);
+      poofBig3.On(3000);
       Serial.println("Joystick in top left position. Big1, small1, big3, small 3 on.");
     }
     else if (buttonValue == 'T')
@@ -864,23 +668,23 @@ void loop() {
   }
 
   //magic lamp buttons
-  if (btn1.fallingEdge())
+  if (btn1.fallingEdge()) //shave and a haircut
   {
-    Serial.println(randomNumber); //random patters on #1 & #2
-    start_pattern(randomNumber);
+    //    Serial.println(randomNumber);
+    //    start_pattern(randomNumber);
+    start_pattern(0);
     Serial.println("green btn 1 pressed");
   }
   //pattern buttons
-  if (btn2.fallingEdge())
+  if (btn2.fallingEdge()) //mexican hat dance
   {
-    Serial.println(randomNumber);
-    start_pattern(randomNumber);
+   start_pattern(1);
     Serial.println("red btn 2 pressed");
   }
   //pattern buttons
-  if (btn3.fallingEdge()) //wedding march on #3
+  if (btn3.fallingEdge()) //ragg mopp
   {
-    start_pattern(3);
+    start_pattern(2);
     Serial.println("yellow btn 3 pressed");
   }
 }
