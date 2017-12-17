@@ -47,19 +47,6 @@ class Poofer
       }
     }
 
-    //    void patternOn(unsigned int ms) //this one turns them on and off sequentially
-    //    {
-    //      elapsedMillis currentMillis;
-    //
-    //      while (currentMillis < ms) {
-    //        pooferState = HIGH;
-    //        digitalWrite(pooferPin, pooferState);
-    //      }
-    //      pooferState = LOW;
-    //      digitalWrite(pooferPin, pooferState);
-    //      currentMillis = 0;
-    //    }
-
     void Update()
     {
       if (pooferState == HIGH) {
