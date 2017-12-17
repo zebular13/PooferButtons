@@ -36,4 +36,4 @@ The control box has four buttons, two potentiometers and kill switch. It also se
 - [ ] Add potentiometer control to LED patterns
 
 ## ISSUES:
-
+- [ ] Only one LED per poofer can run at a time during pattern playback (only stores the state of one orange bar. Code would have to be expanded to have an array and remember where 4-5 bars are at once)

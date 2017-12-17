@@ -2,11 +2,9 @@ int poofer = pgm_read_word(pattern + pattern_position); // use PROGMEM to read t
 unsigned int duration = pgm_read_word(pattern + (pattern_position + 1)); 
 int upcomingduration = 0;
 int last_position;
-//read through the upcoming measures, and if there is a burst seven measures from now, start the LEDs. R
-
+//read through the upcoming measures, and if there is a burst seven measures from now, start the LEDs. 
 //once the current duration plus the next durations equal 700
 for(pattern_position = 0; pattern_position <= patternLength; pattern_position++) {
-    
     upcomingduration += duration;
     upcomingpoofer += poofer;
 
@@ -17,17 +15,17 @@ for(pattern_position = 0; pattern_position <= patternLength; pattern_position++)
         // you can tell if there is a burst because several are fired with no zeros in between. 
         //check to see if there is a burst coming up 700 millis from now...
         if (pgm_read_word(pattern + (pattern_position + 1)) != 0) && (pgm_read_word(pattern + (pattern_position + 3)) != 0) {
-            //wait the remainderTime, then send the signal //is it possible for me to split note apart to do this?
+            //wait the remainderTime, then send the signal 
+            //is it possible for me to split note apart to do this?
 
             Serial1.write(12);
             
             //then start at the beginning or most recent point and play the next part of the pattern
             playPattern(poofer, duration, patternlength);
         } else {
-            //just play the next part of the patter
+            //just play the next part of the pattern
             playPattern(poofer, duration, patternlength);
         }
-    
     }
 }
 
