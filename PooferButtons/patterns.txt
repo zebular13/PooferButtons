@@ -228,6 +228,7 @@ const int pattern2[] PROGMEM = {
   5, 80,
   6, 80, 0, 280,
 };
+
 //Ragg Mopp
 const int pattern3[] PROGMEM = {
   10, 0,
