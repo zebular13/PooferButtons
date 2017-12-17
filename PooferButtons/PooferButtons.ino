@@ -876,18 +876,17 @@ void loop() {
   if (Serial1.available())
   { //read values from the main controller to tell which button has been pressed
     buttonValue = Serial1.read();
-    //a is blue button 1
-    if (buttonValue == 'a')
+    if (buttonValue == 'd')
     {
-      Serial1.write('a');
+      Serial1.write('d');
       poofLittle1.On(4000);
       Serial.println("black btn 1 pressed. Little poofer 1 turns on.");
     }
-    else if (buttonValue == 'A')
+    else if (buttonValue == 'D')
     {
-      Serial1.write('A');
+      Serial1.write('D');
       poofLittle1.Off();
-    }//c = b2
+    }
     else if (buttonValue == 'c')
     {
       Serial1.write('c');
@@ -898,7 +897,7 @@ void loop() {
     {
       Serial1.write('C');
       poofLittle2.Off();
-    }//f is b3
+    }
     else if (buttonValue == 'f')
     {
       Serial1.write('f');
@@ -908,20 +907,20 @@ void loop() {
     {
       Serial1.write('F');
       poofLittle3.Off();
-    }//button b4
-    else if (buttonValue == 'd')
+    }
+    else if (buttonValue == 'a')
     {
-      Serial1.write('d');
+      Serial1.write('a');
       poofBig1.On(4000);
       Serial.println("blue btn 1 pressed. Big poofer 1 turns on.");
     }
-    else if (buttonValue == 'D')
+    else if (buttonValue == 'A')
     {
-      Serial1.write('D');
+      Serial1.write('A');
       poofBig1.Off();
     }
     else if (buttonValue == 'e')
-    { //e is b5
+    { 
       Serial1.write('e');
       poofBig2.On(4000);
       Serial.println("blue btn 2 pressed. Big poofer 2 turns on.");
@@ -931,7 +930,6 @@ void loop() {
       Serial1.write('E');
       poofBig2.Off();
     }
-    //b is btn6
     else if (buttonValue == 'b')
     {
       Serial1.write('b');
@@ -987,45 +985,45 @@ void loop() {
     else if (buttonValue == 'm')
     {
       Serial1.write('m');
-      poofLittle2.On(4000);
-      poofBig2.On(4000);
-      Serial.println("Joystick in top position. Big2 and small2 on.");
+      poofLittle1.On(4000);
+      poofBig1.On(4000);
+      Serial.println("Joystick in top position. Big1 and small1 on.");
     }
     else if (buttonValue == 'M')
     {
       Serial1.write('M');
-      poofLittle2.Off();
-      poofBig2.Off();
+      poofLittle1.Off();
+      poofBig1.Off();
     }
     else if (buttonValue == 'n')
     {
       Serial1.write('n');
       poofLittle2.On(4000);
       poofBig2.On(4000);
-      poofLittle3.On(4000);
-      poofBig3.On(4000);
-      Serial.println("Joystick in top right position. Big2, small2, big3, small3 on.");
+      poofLittle1.On(4000);
+      poofBig1.On(4000);
+      Serial.println("Joystick in top right position. Big2, small2, big1, small1 on.");
     }
     else if (buttonValue == 'N')
     {
       Serial1.write('N');
       poofLittle2.Off();
       poofBig2.Off();
-      poofLittle3.Off();
-      poofBig3.Off();
+      poofLittle1.Off();
+      poofBig1.Off();
     }
     else if (buttonValue == 'o')
     {
       Serial1.write('o');
-      poofLittle3.On(4000);
-      poofBig3.On(4000);
-      Serial.println("Joystick in right position. Big3, small3 on.");
+      poofLittle2.On(4000);
+      poofBig2.On(4000);
+      Serial.println("Joystick in right position. Big2, small2 on.");
     }
     else if (buttonValue == 'O')
     {
       Serial1.write('O');
-      poofLittle3.Off();
-      poofBig3.Off();
+      poofLittle2.Off();
+      poofBig2.Off();
     }
 
     else if (buttonValue == 'p')
@@ -1048,17 +1046,17 @@ void loop() {
     else if (buttonValue == 'q')
     {
       Serial1.write('q');
-      poofLittle1.On(4000);
-      poofBig1.On(4000);
+      poofLittle2.On(4000);
+      poofBig2.On(4000);
       poofLittle3.On(4000);
       poofBig3.On(4000);
-      Serial.println("Joystick in bottom position. Big1, small1, big3, small3 on.");
+      Serial.println("Joystick in bottom position. Big2, small2, big3, small3 on.");
     }
     else if (buttonValue == 'Q')
     {
       Serial1.write('Q');
-      poofLittle1.Off();
-      poofBig1.Off();
+      poofLittle2.Off();
+      poofBig2.Off();
       poofLittle3.Off();
       poofBig3.Off();
     }
@@ -1080,32 +1078,32 @@ void loop() {
     else if (buttonValue == 's')
     {
       Serial1.write('s');
-      poofLittle1.On(4000);
-      poofBig1.On(4000);
-      Serial.println("Joystick in left position. Big1, small1, on.");
+      poofLittle3.On(4000);
+      poofBig3.On(4000);
+      Serial.println("Joystick in left position. Big3, small3, on.");
     }
     else if (buttonValue == 'S')
     {
       Serial1.write('S');
-      poofLittle1.Off();
-      poofBig1.Off();
+      poofLittle3.Off();
+      poofBig3.Off();
     }
     else if (buttonValue == 't')
     {
       Serial1.write('t');
       poofLittle1.On(4000);
       poofBig1.On(4000);
-      poofLittle2.On(4000);
-      poofBig2.On(4000);
-      Serial.println("Joystick in top left position. Big1, small1, big2, small 2 on.");
+      poofLittle3.On(4000);
+      poofBig3.On(4000);
+      Serial.println("Joystick in top left position. Big1, small1, big3, small 3 on.");
     }
     else if (buttonValue == 'T')
     {
       Serial1.write('T');
       poofLittle1.Off();
       poofBig1.Off();
-      poofLittle2.Off();
-      poofBig2.Off();
+      poofLittle3.Off();
+      poofBig3.Off();
     }
 
     //when the joystick returns to center position it turns them off
