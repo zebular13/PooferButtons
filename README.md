@@ -1,12 +1,13 @@
 # PooferButtons
 ## Setup
-PooferButtons and OctoPooferLEDs control three fire poofers and three LED strips via 4 buttons and two potentiometer. **Note:** *PooferButtons_New* hasn't been tested - it's where I'm adding the potentiometer control. 
+PooferButtons and OctoPooferLEDs control three fire poofers and three LED strips via 6 buttons in a triangle (btn_bk1, btn_bk2, btn_bk3 [the black outer ones], btn_b1, btn_b2, btn_b3 [the blue inner ones]), a red button (r) a yellow button (y) and a 4 axis joystick . 
+
 
 **Parts List:**
 * Teensy 3.2
 * Teensy 2.0 (x2)
 * Teensy breakout board (name?)
-* 2 RS45s
+* 5 RS45s
 * 3 4 meter LED strips with (?) LEDs per strip
 * FIRE STUFF & PROPANE!
 
@@ -21,13 +22,17 @@ The control box has four buttons, two potentiometers and kill switch. It also se
 *OctoPooferLEDs* receives the byte that PooferButtons sends when each button is pressed. It controls the LED strips.
 
 ## TO DO:
+- [X] Make sure Button control sends values to start LED patterns
+- [X] Create new LED patterns:
+  - [X] Whoosh - streak of LEDs that runs up the strip and arrives at the top as flame as it bursts out
+  - [X] Sparkle - math.random to make sparkle effect
+- [ ] Fix patterns so they actually sound good
+- [ ] Add pointers to make it easy to time LEDs to match patterns 
+- [ ] Wire kill switch to main controller to override poofers and turn off LEDs 
 - [ ] Create code for holding two buttons at once to trigger patterns
-- [ ] Wire kill switch to override poofers 
+
+## POTENTIAL FEATURES
 - [ ] Add potentiometer control to change speed and open length of poofs (look at Walking Beast's code)
-- [ ] Make sure Button control sends values to start LED patterns
-- [ ] Create new LED patterns:
-  - [ ] Whoosh - streak of LEDs that runs up the strip and arrives at the top as flame as it bursts out
-  - [ ] Sparkle - math.random to make sparkle effect
 - [ ] Add potentiometer control to LED patterns
 
 ## ISSUES:
