@@ -26,7 +26,8 @@ The control box has four buttons, two potentiometers and kill switch. It also se
 - [X] Create new LED patterns:
   - [X] Whoosh - streak of LEDs that runs up the strip and arrives at the top as flame as it bursts out
   - [X] Sparkle - math.random to make sparkle effect
-- [ ] Fix patterns so they actually sound good
+- [ ] Fix patterns so they actually sound good (just Ragg Mopp and Mexican Hat Dance)
+- [ ] Add other colors to the background
 - [ ] Add pointers to make it easy to time LEDs to match patterns 
 - [ ] Wire kill switch to main controller to override poofers and turn off LEDs 
 - [ ] Create code for holding two buttons at once to trigger patterns
