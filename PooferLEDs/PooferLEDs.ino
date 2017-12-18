@@ -2,15 +2,14 @@
 
 const int ledsPerStrip = 207;
 
-DMAMEM int displayMemory[ledsPerStrip * 6];
-int drawingMemory[ledsPerStrip * 6];
+DMAMEM int displayMemory[ledsPerStrip*6];
+int drawingMemory[ledsPerStrip*6];
 
 const int config = WS2811_GRB | WS2811_800kHz;
 
 OctoWS2811 leds(ledsPerStrip, displayMemory, drawingMemory, config);
 
-void setup() 
-{
+void setup() {
   Serial1.begin(9600);
   random(2000);
   leds.begin();
@@ -18,20 +17,20 @@ void setup()
 }
 
 elapsedMillis frameTime;
-int vstate1 = 10000;
-int vstate2 = 10000;
-int vstate3 = 10000;
-float background_hue = 209.0; //default to mid-blue
+int vstate1=10000;
+int vstate2=10000;
+int vstate3=10000;
+float background_hue = 189.0; //default to mid-blue
 
 
-void loop() 
-{
+void loop() {
   // Check for commands from controller
   checkSerial();
-
-  if (frameTime > 20) { //if more than 20 seconds have passed
+  
+  if (frameTime > 20) {
     //Serial.println("draw");
     frameTime -= 20;
+
     // draw color changing background
     colorBackground();
 
@@ -73,8 +72,7 @@ void loop()
   }
 }
 
-void checkSerial()
-{
+void checkSerial() {
   if (Serial1.available()) {
     int cmd = Serial1.read();
     //Serial.printf("cmd = %d\n", cmd);
@@ -96,27 +94,25 @@ void checkSerial()
     if (c == 'c') vstate3 = 0;
   }
 }
-
-void colorBackground()
-{
-  float deltahue = ((float)((int)random(2000) - 1000)) * 0.003; //0.003 is -2.0 to +2.0
-  deltahue += (background_hue - background_hue) * 0.001; // bias towards the background_hue
-  //Serial.printf("deltahue = %.2f\n", deltahue);
-  background_hue += deltahue;
-  if (background_hue > 289.0) background_hue = 289.0; //don't get too purple
-  if (background_hue < 0.0) background_hue = 0.0; //don't get too yellow-green
-  unsigned int hue = background_hue;
-
-  //Serial.printf("hue = %d\n", hue);
-  for (int i = 0; i < ledsPerStrip; i++) { //set wish 1 color
-    unsigned int saturation = 70 + random(25);
-    unsigned int lightness = 20 + random(10);
-    leds.setPixel(i, makeColor(hue + ((i) * 0.3), saturation + (i * 0.6), lightness - (i * 0.01)));
-  }
-  for (int i = ledsPerStrip; i < ledsPerStrip*2; i++) { //set wish 2 color
-    unsigned int saturation = 70 + random(25);
-    unsigned int lightness = 20 + random(10);
-    leds.setPixel(i-ledsPerStrip, makeColor(hue + ((i - ledsPerStrip) * 0.3), saturation + (i * 0.6), lightness - (i * 0.6)));
-  }
+void colorBackground() {
+  float deltahue = ((float)((int)random(2000) - 1000)) * 0.003; // -2.0 to +2.0
+    deltahue += (background_hue - background_hue) * 0.001; // bias towards 269.0
+    //Serial.printf("deltahue = %.2f\n", deltahue);
+    background_hue += deltahue;
+    if (background_hue > 289.0) background_hue = 289.0; //don't get too purple
+    if (background_hue < 0.0) background_hue = 0.0; //don't get too yellow-green
+    unsigned int hue = background_hue;
+    //Serial.printf("hue = %d\n", hue);
+    
+    for (int i=0; i < ledsPerStrip; i++) {
+      unsigned int saturation = 70 + random(25); 
+      unsigned int lightness = 20 + random(10);
+      leds.setPixel(i, makeColor(hue - (i*0.6), saturation +(i*0.6), lightness));
+    }
+    for (int i=ledsPerStrip; i < ledsPerStrip*2; i++) {
+      unsigned int saturation = 70 + random(25); 
+      unsigned int lightness = 20 + random(10);
+      leds.setPixel(i, makeColor(hue - ((i-ledsPerStrip)*0.6), saturation+((i-ledsPerStrip)*0.6), lightness));
+    }
 }
 
