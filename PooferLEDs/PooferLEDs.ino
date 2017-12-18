@@ -26,11 +26,9 @@ float background_hue = 189.0; //default to mid-blue
 void loop() {
   // Check for commands from controller
   checkSerial();
-  
   if (frameTime > 20) {
-    //Serial.println("draw");
-    frameTime -= 20;
-
+    frameTime -= 20; //update every 2ms. 35 frames x 20 ms per frame = 700
+    
     // draw color changing background
     colorBackground();
 
@@ -99,8 +97,8 @@ void colorBackground() {
     deltahue += (background_hue - background_hue) * 0.001; // bias towards 269.0
     //Serial.printf("deltahue = %.2f\n", deltahue);
     background_hue += deltahue;
-    if (background_hue > 289.0) background_hue = 289.0; //don't get too purple
-    if (background_hue < 0.0) background_hue = 0.0; //don't get too yellow-green
+    if (background_hue > 309.0) background_hue = 309.0; //don't get too purple
+    if (background_hue < 20.0) background_hue = 20.0; //don't get too yellow-green
     unsigned int hue = background_hue;
     //Serial.printf("hue = %d\n", hue);
     

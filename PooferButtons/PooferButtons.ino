@@ -677,14 +677,12 @@ void loop() {
     start_pattern(0);
     Serial.println("green btn 1 pressed groovy");
   }
-  //pattern buttons
   if (btn2.fallingEdge()) //mexican hat dance
   {
    start_pattern(2);
     Serial.println("red btn 2 pressed cantina");
   }
-  //pattern buttons
-  if (btn3.fallingEdge()) //ragg mopp
+  if (btn3.fallingEdge()) //choo choo
   {
     start_pattern(3);
     Serial.println("yellow btn 3 pressed choo choo train");
