@@ -16,19 +16,12 @@ void setup() {
   leds.show();
 }
 
-#define RED    0xFF0000
-#define GREEN  0x00FF00
-#define BLUE   0x0000FF
-#define YELLOW 0xFFFF00
-#define PINK   0xFF1088
-#define ORANGE 0xE05800
-#define WHITE  0xFFFFFF
-
 elapsedMillis frameTime;
 int vstate1=10000;
 int vstate2=10000;
 int vstate3=10000;
-float background_hue = 269.0;
+int vstate4=0;
+float background_hue = 209.0; //default to mid-blue
 
 
 void loop() {
@@ -45,6 +38,7 @@ void loop() {
     if (cmd == 12) {
       vstate3 = 0; // Wish #3 vertical up sweep, 35 frames = 700 ms
     }
+    else vstate4 = 0;
   }
   // Check for commands from Arduino Serial Monitor (testing only)
   if (Serial.available()) {
@@ -59,30 +53,48 @@ void loop() {
     frameTime -= 20;
 
     // draw color changing background
-    float deltahue = ((float)((int)random(2000) - 1000)) * 0.003; // -2.0 to +2.0
-    deltahue += (269.0 - background_hue) * 0.001; // bias towards 269.0
+    float deltahue = ((float)((int)random(2000) - 1000)) * 0.003; //0.003 is -2.0 to +2.0
+    deltahue += (background_hue - background_hue) * 0.001; // bias towards the background_hue
     //Serial.printf("deltahue = %.2f\n", deltahue);
     background_hue += deltahue;
-    if (background_hue > 359.0) background_hue = 359.0;
-    if (background_hue < 179.0) background_hue = 179.0;
+    if (background_hue > 289.0) background_hue = 289.0; //don't get too purple
+    if (background_hue < 0.0) background_hue = 0.0; //don't get too yellow-green
     unsigned int hue = background_hue;
     //Serial.printf("hue = %d\n", hue);
-    for (int i=0; i < ledsPerStrip*3; i++) {
-      unsigned int saturation = 70 + random(25); 
-      unsigned int lightness = 20 + random(10);
-      leds.setPixel(i, makeColor(hue, saturation, lightness));
+
+    for (int i = 0; i < ledsPerStrip; i++) { //set wish 2 color
+        unsigned int saturation = 70 + random(25); 
+        unsigned int lightness = 20 + random(10);
+        leds.setPixel(i, makeColor(hue+((i)*0.3), saturation+(i*0.6), lightness-(i*0.01)));     
+    }
+    for (int i=ledsPerStrip; i < ledsPerStrip*2; i++) { //set wish 2 color
+        unsigned int saturation = 70 + random(25); 
+        unsigned int lightness = 20 + random(10);
+        leds.setPixel(i, makeColor(hue+((i-ledsPerStrip)*0.3), saturation+(i*0.6), lightness-(i*0.01)));     
     }
 
+    if (vstate4 < ledsPerStrip) {
+      int b = (float)vstate4 * 5.8;
+      int e = b + ledsPerStrip;
+      if (e >= ledsPerStrip) e = ledsPerStrip-1;
+      for (int i=0; i < e; i++) { //set wish 1 color
+        unsigned int saturation = 70 + random(25); 
+        unsigned int lightness = 20 + random(10);
+        leds.setPixel(ledsPerStrip + i, makeColor(hue+(i-ledsPerStrip)*2, saturation, lightness));  
+      }
+      vstate4++;
+    }
+    
     // vertical up sweep on wish #1
-    if (vstate1 < 35) {
-      int b = (float)vstate1 * 5.8;
+    if (vstate4 < 35) {
+      int b = (float)vstate4 * 5.8;
       int e = b + 12;
       if (e >= ledsPerStrip) e = ledsPerStrip-1;
       for (int i=b; i < e; i++) {
-        leds.setPixel(i, 0xFF7800);
+        leds.setPixel(ledsPerStrip + i, 0xFF7800);
       }
       //Serial.printf("vstate1 = %d\n", vstate1);
-      vstate1++;
+      vstate4++;
     }
     // vertical up sweep on wish #2
     if (vstate2 < 35) {

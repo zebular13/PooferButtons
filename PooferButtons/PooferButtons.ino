@@ -86,14 +86,14 @@ long randomNumber; //random number for selecting a random pattern
 
 //groovy pattern
 const int pattern0[] PROGMEM = {
-  10, 0,
-  11, 0, 
-  1, 300, 0, 525,
+  
+  11, 0,
+  1, 300, 0, 525, //notes don't start playing until both leds reach the top
   1, 300, 0, 525,
 
   4, 300, 0, 525,
   4, 300, 0, 420,
-  11, 0,
+  10, 0,
   11, 0, 0, 70,
   1, 300, 0, 525,
   1, 300, 0, 301,
@@ -103,18 +103,16 @@ const int pattern0[] PROGMEM = {
   4, 300, 0, 525,
 
   10, 0,
-  10, 0,
-  1, 300, 0, 525,
-  1, 300, 0, 525,
+  2, 300, 0, 525,
+  2, 300, 0, 525,
 
   4, 300, 0, 525,
   4, 300, 0, 420,
-  10, 0,
-  10, 0, 0, 70,
   1, 300, 0, 525,
   1, 300, 0, 301,
-  2, 150, 0, 180,
-
+  11, 0,
+  10, 0,
+  2, 150, 0, 174,
   4, 300, 0, 525,
   //burst
   1, 300,
@@ -122,7 +120,6 @@ const int pattern0[] PROGMEM = {
   4, 300,
   5, 300, 601,
 };
-
 
 //Not ragg mop
 const int pattern1[] PROGMEM = {
@@ -169,50 +166,74 @@ const int pattern1[] PROGMEM = {
 //Mos Eisley cantina for 2 poofers 3/3 timing - pretty good
 const int pattern2[] PROGMEM = {
   //  Di-di di-di di-di dee-di-doo, di-di di-doo!
+  10, 0,
   1, 375, 0, 376,
   2, 375, 0, 376,
+  11, 0,
   5, 375, 0, 376,
   2, 375, 0, 376,
+  10, 0,
   5, 375, 0, 376,
   2, 375, 0, 376,
-  1, 180, 0, 181,
+  11, 0,
+  5, 180, 0, 181,
   4, 375, 0, 376,
   1, 180, 0, 181,
   4, 375, 0, 376,
 
   5, 375, 0, 376,
-  4, 375, 0, 601,
+  4, 300, 0, 301,
+  10, 0,
+  11, 0,
+  4, 75, 0, 301,
 
-  2, 375, 0, 376,
+  2, 375, 0, 400,
   1, 1500, 
   4, 1500, 0, 2000,
   
   //  Di-di di-di di-di dee-di-doo, di-di di-doo!
-  2, 375, 0, 376,
-  5, 375, 0, 376,
+  11, 0,
   1, 375, 0, 376,
   2, 375, 0, 376,
+  10, 0,
   5, 375, 0, 376,
   2, 375, 0, 376,
-  1, 180, 0, 181,
+  11, 0,
+  5, 375, 0, 376,
+  2, 375, 0, 376,
+  10, 0,
+  5, 180, 0, 181,
   4, 375, 0, 376,
   1, 180, 0, 181,
   4, 375, 0, 376,
 
   5, 375, 0, 376,
-  4, 375, 0, 601,
-
-  2, 375, 0, 376,
+  4, 300, 0, 301,
+  10, 0,
+  11, 0,
+  4, 75, 0, 301,
+  
+  2, 375, 0, 400,
   1, 1500, 
   4, 1500, 0, 2000,
 };
 
 const int pattern3[] PROGMEM = {
   //choo choo train - 15seconds at 1.5x speed
-  1, 1500, 0, 1501,
-  2, 1500, 0, 1801,
 
-  1, 1400, 0, 1401,
+  10, 0, 
+  1, 800, 0, 801,
+  11, 0,
+  1, 700, 0, 701,
+  
+  2, 1200, 0, 1101,
+  11, 0,
+  2, 300, 0, 700,
+
+  1, 700, 0, 701,
+  10, 0, 
+  1, 700, 0, 701,
+  
   2, 1400, 0, 1521,
 
   1, 330, 0, 331,
@@ -247,6 +268,8 @@ const int pattern3[] PROGMEM = {
 
   1, 150, 0, 151,
   1, 100, 0, 101,
+  11, 0,
+  10, 0,
   2, 150, 0, 151,
   2, 100, 0, 101,
 
@@ -254,7 +277,6 @@ const int pattern3[] PROGMEM = {
   1, 100, 0, 101,
   2, 150, 0, 151,
   2, 100, 0, 101,
-
 
   1, 1500, 
   2, 1500, 
@@ -653,7 +675,7 @@ void loop() {
     //    Serial.println(randomNumber);
     //    start_pattern(randomNumber);
     start_pattern(0);
-    Serial.println("green btn 1 pressed safety dance");
+    Serial.println("green btn 1 pressed groovy");
   }
   //pattern buttons
   if (btn2.fallingEdge()) //mexican hat dance
@@ -664,7 +686,7 @@ void loop() {
   //pattern buttons
   if (btn3.fallingEdge()) //ragg mopp
   {
-    start_pattern(1);
+    start_pattern(3);
     Serial.println("yellow btn 3 pressed choo choo train");
   }
 }
